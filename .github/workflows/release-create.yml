@@ -1,18 +1,32 @@
 name: "release: create on push"
 
 on:
-  push: 
+  push:
     branches:
       - main
 
 jobs:
+  build_n_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: '10.0.x'
+      - name: restore
+        run: dotnet restore
+      - name: build
+        run: dotnet build --no-restore --configuration Release
+      - name: test
+        run: dotnet test --no-restore --no-build --configuration Release --verbosity normal
+
   tag:
     runs-on: ubuntu-latest
-    outputs: 
+    outputs:
       tag: ${{ steps.tag.outputs.tag }}
     steps:
       - uses: actions/checkout@v6
-        with: 
+        with:
           fetch-tags: true
       - name: latest tag
         id: tag
@@ -26,9 +40,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-        with: 
+        with:
           fetch-tags: true
-      - name: check release 
+      - name: check release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG: ${{ needs.tag.outputs.tag }}
@@ -39,11 +53,11 @@ jobs:
           fi
   
   release:
-    needs: [tag, check]
+    needs: [ build_n_test, tag, check ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-        with: 
+        with:
           fetch-tags: true
       - name: create release
         env:
