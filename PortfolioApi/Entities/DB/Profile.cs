@@ -1,4 +1,4 @@
-namespace PortfolioApi.Entities;
+namespace PortfolioApi.Entities.DB;
 
 public class Profile
 {

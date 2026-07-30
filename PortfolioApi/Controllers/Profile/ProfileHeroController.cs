@@ -1,6 +1,6 @@
 using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
-using PortfolioApi.Entities;
+using PortfolioApi.Entities.DB;
 using PortfolioApi.Services;
 
 namespace PortfolioApi.Controllers.Profile;

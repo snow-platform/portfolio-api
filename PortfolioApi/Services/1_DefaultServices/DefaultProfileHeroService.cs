@@ -1,7 +1,7 @@
-using PortfolioApi.Entities;
+using PortfolioApi.Entities.DB;
 using PortfolioApi.ExternalServices.Persistence;
 
-namespace PortfolioApi.Services.DefaultServices;
+namespace PortfolioApi.Services;
 
 public class DefaultProfileHeroService : IProfileHeroService
 {

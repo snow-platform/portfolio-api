@@ -1,4 +1,4 @@
-using PortfolioApi.Entities;
+using PortfolioApi.Entities.DB;
 
 namespace PortfolioApi.ExternalServices.Persistence;
 

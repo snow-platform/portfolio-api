@@ -1,6 +1,6 @@
 using Dapper;
 using Microsoft.Data.Sqlite;
-using PortfolioApi.Entities;
+using PortfolioApi.Entities.DB;
 
 namespace PortfolioApi.ExternalServices.Persistence.Sqlite;
 

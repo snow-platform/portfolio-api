@@ -2,7 +2,7 @@ using PortfolioApi.DTO;
 using PortfolioApi.EntityValueObject;
 using PortfolioApi.ExternalServices.Persistence;
 
-namespace PortfolioApi.Services.DefaultServices;
+namespace PortfolioApi.Services;
 
 public class DefaultProfileCardService : IProfileCardService
 {

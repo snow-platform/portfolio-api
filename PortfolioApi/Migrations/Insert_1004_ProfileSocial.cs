@@ -1,5 +1,5 @@
 using FluentMigrator;
-using PortfolioApi.Entities;
+using PortfolioApi.Entities.DB;
 
 namespace PortfolioApi.Migrations;
 

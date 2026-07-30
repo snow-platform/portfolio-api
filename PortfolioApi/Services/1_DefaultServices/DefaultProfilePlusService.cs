@@ -1,7 +1,7 @@
 using PortfolioApi.DTO;
 using PortfolioApi.ExternalServices.Persistence;
 
-namespace PortfolioApi.Services.DefaultServices;
+namespace PortfolioApi.Services;
 
 public class DefaultProfilePlusService : IProfilePlusService
 {

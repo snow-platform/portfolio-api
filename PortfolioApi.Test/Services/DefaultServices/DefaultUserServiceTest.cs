@@ -1,8 +1,7 @@
 using NSubstitute;
-using PortfolioApi.Entities;
+using PortfolioApi.Entities.DB;
 using PortfolioApi.ExternalServices.Persistence;
 using PortfolioApi.Services;
-using PortfolioApi.Services.DefaultServices;
 
 namespace PortfolioApi.Test.Services.DefaultServices;
 

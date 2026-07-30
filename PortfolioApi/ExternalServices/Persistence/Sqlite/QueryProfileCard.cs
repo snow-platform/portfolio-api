@@ -1,6 +1,6 @@
 using Dapper;
 using Microsoft.Data.Sqlite;
-using PortfolioApi.Entities;
+using PortfolioApi.Entities.DB;
 using PortfolioApi.EntityValueObject;
 using PortfolioApi.Utilities;
 

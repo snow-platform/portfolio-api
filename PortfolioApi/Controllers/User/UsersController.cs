@@ -17,7 +17,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet("{email}")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Entities.User))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Entities.DB.User))]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> FindUserFromEmail(string email)
