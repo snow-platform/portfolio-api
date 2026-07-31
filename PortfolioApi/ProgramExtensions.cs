@@ -3,6 +3,7 @@ using FluentMigrator.Runner;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.Data.Sqlite;
+using Microsoft.Extensions.Caching.Hybrid;
 using Microsoft.Extensions.Logging.Console;
 using Microsoft.IdentityModel.Tokens;
 using PortfolioApi.ExternalServices.Persistence;
@@ -81,6 +82,22 @@ public static class ProgramExtensions
         public IServiceCollection AddSqlDb()
         {
             services.AddSingleton<IDbConnection<SqliteConnection>, SqliteConnectionSource>();
+
+            return services;
+        }
+        
+        public IServiceCollection AddCaching()
+        {
+            services.AddHybridCache(x =>
+            {
+                x.MaximumPayloadBytes = 1024 * 1024;
+                x.MaximumKeyLength = 1024;
+                x.DefaultEntryOptions = new HybridCacheEntryOptions
+                {
+                    Expiration = TimeSpan.FromHours(2),
+                    LocalCacheExpiration = TimeSpan.FromHours(2)
+                };
+            });
 
             return services;
         }

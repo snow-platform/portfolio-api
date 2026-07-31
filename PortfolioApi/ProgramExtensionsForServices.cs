@@ -1,5 +1,4 @@
 using PortfolioApi.Services;
-using PortfolioApi.Services.DefaultServices;
 
 namespace PortfolioApi;
 
@@ -15,6 +14,8 @@ public static class ProgramExtensionsForServices
             services.AddScoped<IProfileCardService, DefaultProfileCardService>();
             services.AddScoped<IProfilePlusService, DefaultProfilePlusService>();
             services.AddScoped<IProfileWorkService, DefaultProfileWorkService>();
+            services.AddScoped<IProfileLearning, DefaultProfileLearning>();
+            services.AddScoped<IProfileArticle, DefaultProfileArticle>();
 
             return services;
         }

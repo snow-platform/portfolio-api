@@ -29,11 +29,20 @@ builder.Services.AddCors(x =>
 builder.Services.AddSimpleLogging();
 builder.Services.AddSimpleVersioning();
 builder.Services.AddSqlDb();
-builder.Services.AddDefaultServices();
-builder.Services.AddExternalServicesPersistence();
+builder.Services.AddCaching();
 
 builder.AddFluentMigration();
 builder.AddOptions();
+
+// services
+builder.Services.AddDefaultServices();
+
+// external services
+// persistence
+builder.Services.AddExternalServicesPersistence();
+
+// cms
+builder.AddCMS();
 
 // health checks
 builder.Services.AddHealthChecks();
