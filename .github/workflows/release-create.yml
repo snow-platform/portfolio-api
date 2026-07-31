@@ -6,11 +6,6 @@ on:
       - main
 
 jobs:
-  check:
-    uses: snow-platform/workflows/.github/workflows/default-dotnet-check.yml@main
-    with:
-      version: '10.0.x'
-
   tag:
     runs-on: ubuntu-latest
     outputs:
@@ -43,8 +38,13 @@ jobs:
             exit 0
           fi
   
+  check:
+    uses: snow-platform/workflows/.github/workflows/default-dotnet-check.yml@main
+    with:
+      version: '10.0.x'
+  
   release:
-    needs: [ check, tag, tag_check ]
+    needs: [ tag, tag_check, check ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
