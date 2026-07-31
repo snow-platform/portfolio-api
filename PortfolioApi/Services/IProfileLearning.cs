@@ -5,6 +5,6 @@ namespace PortfolioApi.Services;
 
 public interface IProfileLearning
 {
-    Task<ProducesEntity<CollectionType<Article>>> GetProfileLearnings(Guid profileExternalId,
+    Task<ProducesEntity<CollectionType<Learn>>> GetProfileLearnings(Guid profileExternalId,
         Pagination pagination);
 }

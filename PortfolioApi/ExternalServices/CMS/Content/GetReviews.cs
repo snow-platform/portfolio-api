@@ -2,12 +2,12 @@ using PortfolioApi.EntityValueObject;
 
 namespace PortfolioApi.ExternalServices.CMS.Content;
 
-public class GetLearnings : ICmsContent
+public class GetReviews : ICmsContent
 {
     private readonly Pagination _pagination;
     private readonly string _token;
 
-    public GetLearnings(Pagination pagination, string token)
+    public GetReviews(Pagination pagination, string token)
     {
         _pagination = pagination;
         _token = token;
@@ -16,7 +16,7 @@ public class GetLearnings : ICmsContent
     public string Endpoint
     {
         get =>
-            $"/api/articles?populate=*&filters[category][name][$eq]=learnings&pagination[page]={_pagination.SanitizePage()}&pagination[pageSize]={_pagination.SanitizeSize()}&sort[0]=publishedAt:desc";
+            $"/api/reviews?populate=*&pagination[page]={_pagination.SanitizePage()}&pagination[pageSize]={_pagination.SanitizeSize()}&sort[0]=publishedAt:desc";
     }
 
     public HttpMethod HttpMethod

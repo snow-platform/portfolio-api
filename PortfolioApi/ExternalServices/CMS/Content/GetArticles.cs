@@ -16,7 +16,7 @@ public class GetArticles : ICmsContent
     public string Endpoint
     {
         get =>
-            $"/api/articles?populate=*&filters[category][name][$eq]=articles&pagination[page]={_pagination.SanitizePage()}&pagination[pageSize]={_pagination.SanitizeSize()}&sort[0]=publishedAt:desc";
+            $"/api/articles?populate=*&pagination[page]={_pagination.SanitizePage()}&pagination[pageSize]={_pagination.SanitizeSize()}&sort[0]=publishedAt:desc";
     }
 
     public HttpMethod HttpMethod
