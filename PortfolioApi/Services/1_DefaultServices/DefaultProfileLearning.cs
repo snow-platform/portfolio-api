@@ -47,4 +47,35 @@ public class DefaultProfileLearning : IProfileLearning
 
         return new ProducesEntityGood<CollectionType<Learn>>(((CmsEitherOk<CollectionType<Learn>>)either).Value);
     }
+
+    public async Task<ProducesEntity<SingleType<Learn>>> GetProfileLearning(Guid profileExternalId,
+        string slug)
+    {
+        var profileCms = await _profileCms.FindFromProfileExternalId(profileExternalId);
+
+        if (profileCms is null)
+        {
+            return new ProducesEntityFail<SingleType<Learn>>(StatusCodes.Status404NotFound, "Not Found",
+                "Profile not found");
+        }
+
+        var content = new GetReview(slug, profileCms.Token ?? "");
+        var either = await _cmsInvoker.Invoke<SingleType<Learn>>(content);
+
+        if (either is CmsEitherEmpty)
+        {
+            return new ProducesEntityFail<SingleType<Learn>>(StatusCodes.Status500InternalServerError,
+                "Unknown Error",
+                "Something went wrong when fetching the learning");
+        }
+
+        if (either is CmsEitherError error)
+        {
+            return new ProducesEntityFail<SingleType<Learn>>(error.StatusCode,
+                error.Error,
+                error.Description);
+        }
+
+        return new ProducesEntityGood<SingleType<Learn>>(((CmsEitherOk<SingleType<Learn>>)either).Value);
+    }
 }

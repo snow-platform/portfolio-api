@@ -34,4 +34,20 @@ public class ProfileArticlesController : ControllerBase
 
         return Ok(articles.Entity);
     }
+
+    [HttpGet("{slug}")]
+    [ProducesResponseType(typeof(ProducesEntity<SingleType<Article>>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> GetProfileArticle(Guid profileId, string slug)
+    {
+        var article = await _profileArticle.GetProfileArticle(profileId, slug);
+
+        if (article is ProducesEntityFail<SingleType<Article>> fail)
+        {
+            return Problem(statusCode: fail.StatusCode, title: fail.Error, detail: fail.Description);
+        }
+
+        return Ok(article.Entity);
+    }
 }

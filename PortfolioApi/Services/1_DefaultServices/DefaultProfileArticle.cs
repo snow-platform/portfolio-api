@@ -47,4 +47,35 @@ public class DefaultProfileArticle : IProfileArticle
 
         return new ProducesEntityGood<CollectionType<Article>>(((CmsEitherOk<CollectionType<Article>>)either).Value);
     }
+
+    public async Task<ProducesEntity<SingleType<Article>>> GetProfileArticle(Guid profileExternalId,
+        string slug)
+    {
+        var profileCms = await _profileCms.FindFromProfileExternalId(profileExternalId);
+
+        if (profileCms is null)
+        {
+            return new ProducesEntityFail<SingleType<Article>>(StatusCodes.Status404NotFound, "Not Found",
+                "Profile not found");
+        }
+
+        var content = new GetArticle(slug, profileCms.Token ?? "");
+        var either = await _cmsInvoker.Invoke<SingleType<Article>>(content);
+
+        if (either is CmsEitherEmpty)
+        {
+            return new ProducesEntityFail<SingleType<Article>>(StatusCodes.Status500InternalServerError,
+                "Unknown Error",
+                "Something went wrong when fetching the article");
+        }
+
+        if (either is CmsEitherError error)
+        {
+            return new ProducesEntityFail<SingleType<Article>>(error.StatusCode,
+                error.Error,
+                error.Description);
+        }
+
+        return new ProducesEntityGood<SingleType<Article>>(((CmsEitherOk<SingleType<Article>>)either).Value);
+    }
 }

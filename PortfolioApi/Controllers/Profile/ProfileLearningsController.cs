@@ -34,4 +34,20 @@ public class ProfileLearningsController : ControllerBase
 
         return Ok(articles.Entity);
     }
+
+    [HttpGet("{slug}")]
+    [ProducesResponseType(typeof(ProducesEntity<SingleType<Learn>>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> GetProfileLearning(Guid profileId, string slug)
+    {
+        var learning = await _profileLearning.GetProfileLearning(profileId, slug);
+
+        if (learning is ProducesEntityFail<SingleType<Learn>> fail)
+        {
+            return Problem(statusCode: fail.StatusCode, title: fail.Error, detail: fail.Description);
+        }
+
+        return Ok(learning.Entity);
+    }
 }

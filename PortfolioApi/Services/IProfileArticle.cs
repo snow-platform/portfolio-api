@@ -7,4 +7,7 @@ public interface IProfileArticle
 {
     Task<ProducesEntity<CollectionType<Article>>> GetProfileArticles(Guid profileExternalId,
         Pagination pagination);
+
+    Task<ProducesEntity<SingleType<Article>>> GetProfileArticle(Guid profileExternalId,
+        string slug);
 }
