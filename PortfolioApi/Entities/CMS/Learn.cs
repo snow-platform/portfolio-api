@@ -37,6 +37,9 @@ public class Learn
     [JsonPropertyName("category")]
     public Category? Category { get; set; }
 
+    [JsonPropertyName("tags")]
+    public List<Tag>? Tags { get; set; }
+
     [JsonPropertyName("blocks")]
     public List<Blocks>? Blocks { get; set; }
 }
