@@ -14,7 +14,7 @@ public class GetArticle : ICmsContent
 
     public string Endpoint
     {
-        get => $"/api/articles/{Uri.EscapeDataString(_slug)}?populate=*";
+        get => $"/api/articles/{Uri.EscapeDataString(_slug)}?populate=cover&populate=author,author.avatar&populate=category&populate=tags&populate=blocks,blocks.file,blocks.files";
     }
 
     public HttpMethod HttpMethod

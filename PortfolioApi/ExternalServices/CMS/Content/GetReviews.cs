@@ -16,7 +16,7 @@ public class GetReviews : ICmsContent
     public string Endpoint
     {
         get =>
-            $"/api/reviews?populate=*&pagination[page]={_pagination.SanitizePage()}&pagination[pageSize]={_pagination.SanitizeSize()}&sort[0]=publishedAt:desc";
+            $"/api/reviews?populate=category&populate=tags&pagination[page]={_pagination.SanitizePage()}&pagination[pageSize]={_pagination.SanitizeSize()}&sort[0]=publishedAt:desc";
     }
 
     public HttpMethod HttpMethod

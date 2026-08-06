@@ -14,7 +14,7 @@ public class GetReview : ICmsContent
 
     public string Endpoint
     {
-        get => $"/api/reviews/{Uri.EscapeDataString(_slug)}?populate=*";
+        get => $"/api/reviews/{Uri.EscapeDataString(_slug)}?populate=cover&populate=author,author.avatar&populate=category&populate=tags&populate=blocks,blocks.file,blocks.files";
     }
 
     public HttpMethod HttpMethod
