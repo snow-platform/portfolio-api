@@ -19,7 +19,7 @@ public class ProfileArticlesController : ControllerBase
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(ProducesEntity<CollectionType<Article>>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProducesEntity<CollectionType<object>>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> GetProfileArticles(Guid profileId,
@@ -27,7 +27,7 @@ public class ProfileArticlesController : ControllerBase
     {
         var articles = await _profileArticle.GetProfileArticles(profileId, pagination);
 
-        if (articles is ProducesEntityFail<CollectionType<Article>> fail)
+        if (articles is ProducesEntityFail<CollectionType<object>> fail)
         {
             return Problem(statusCode: fail.StatusCode, title: fail.Error, detail: fail.Description);
         }
@@ -36,14 +36,14 @@ public class ProfileArticlesController : ControllerBase
     }
 
     [HttpGet("{slug}")]
-    [ProducesResponseType(typeof(ProducesEntity<SingleType<Article>>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProducesEntity<SingleType<object>>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> GetProfileArticle(Guid profileId, string slug)
     {
         var article = await _profileArticle.GetProfileArticle(profileId, slug);
 
-        if (article is ProducesEntityFail<SingleType<Article>> fail)
+        if (article is ProducesEntityFail<SingleType<object>> fail)
         {
             return Problem(statusCode: fail.StatusCode, title: fail.Error, detail: fail.Description);
         }

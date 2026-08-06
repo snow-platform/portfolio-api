@@ -5,9 +5,9 @@ namespace PortfolioApi.Services;
 
 public interface IProfileArticle
 {
-    Task<ProducesEntity<CollectionType<Article>>> GetProfileArticles(Guid profileExternalId,
+    Task<ProducesEntity<CollectionType<object>>> GetProfileArticles(Guid profileExternalId,
         Pagination pagination);
 
-    Task<ProducesEntity<SingleType<Article>>> GetProfileArticle(Guid profileExternalId,
+    Task<ProducesEntity<SingleType<object>>> GetProfileArticle(Guid profileExternalId,
         string slug);
 }

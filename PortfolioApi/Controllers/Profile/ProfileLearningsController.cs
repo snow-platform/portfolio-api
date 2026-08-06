@@ -19,7 +19,7 @@ public class ProfileLearningsController : ControllerBase
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(ProducesEntity<CollectionType<Learn>>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProducesEntity<CollectionType<object>>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> GetProfileLearnings(Guid profileId,
@@ -27,7 +27,7 @@ public class ProfileLearningsController : ControllerBase
     {
         var articles = await _profileLearning.GetProfileLearnings(profileId, pagination);
 
-        if (articles is ProducesEntityFail<CollectionType<Learn>> fail)
+        if (articles is ProducesEntityFail<CollectionType<object>> fail)
         {
             return Problem(statusCode: fail.StatusCode, title: fail.Error, detail: fail.Description);
         }
@@ -36,14 +36,14 @@ public class ProfileLearningsController : ControllerBase
     }
 
     [HttpGet("{slug}")]
-    [ProducesResponseType(typeof(ProducesEntity<SingleType<Learn>>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProducesEntity<SingleType<object>>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> GetProfileLearning(Guid profileId, string slug)
     {
         var learning = await _profileLearning.GetProfileLearning(profileId, slug);
 
-        if (learning is ProducesEntityFail<SingleType<Learn>> fail)
+        if (learning is ProducesEntityFail<SingleType<object>> fail)
         {
             return Problem(statusCode: fail.StatusCode, title: fail.Error, detail: fail.Description);
         }
