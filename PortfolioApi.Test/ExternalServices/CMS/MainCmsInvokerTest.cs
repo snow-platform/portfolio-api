@@ -1,5 +1,6 @@
 using System.Net;
 using System.Text;
+using System.Text.Json;
 using NSubstitute;
 using PortfolioApi.Entities.CMS;
 using PortfolioApi.EntityValueObject;
@@ -53,13 +54,13 @@ public class MainCmsInvokerTest
             Page = 1,
             Size = 10
         };
-        var either = await invoker.Invoke<CollectionType<Article>>(new GetArticles(pagination, "sample-token"));
+        var either = await invoker.Invoke<CollectionType<object>>(new GetArticles(pagination, "sample-token"));
 
         // assert
-        var ok = Assert.IsType<CmsEitherOk<CollectionType<Article>>>(either);
+        var ok = Assert.IsType<CmsEitherOk<CollectionType<object>>>(either);
         Assert.Equal(StatusCodes.Status200OK, ok.StatusCode);
         Assert.Equal(2, ok.Value.Data!.Count);
-        Assert.Equal("sample", ok.Value.Data[0].Slug);
+        Assert.Equal("sample", ((JsonElement)ok.Value.Data[0]).GetProperty("slug").GetString());
         Assert.Equal(42, ok.Value.Meta!.Pagination!.Total);
     }
 
@@ -75,13 +76,13 @@ public class MainCmsInvokerTest
         var invoker = CreateInvoker(handler);
 
         // act
-        var either = await invoker.Invoke<SingleType<Article>>(new GetArticle("sample", "sample-token"));
+        var either = await invoker.Invoke<SingleType<object>>(new GetArticle("sample", "sample-token"));
 
         // assert
-        var ok = Assert.IsType<CmsEitherOk<SingleType<Article>>>(either);
+        var ok = Assert.IsType<CmsEitherOk<SingleType<object>>>(either);
         Assert.Equal(StatusCodes.Status200OK, ok.StatusCode);
         Assert.NotNull(ok.Value.Data);
-        Assert.Equal("Sample", ok.Value.Data.Title);
+        Assert.Equal("Sample", ((JsonElement)ok.Value.Data).GetProperty("title").GetString());
     }
 
     [Fact]
@@ -92,7 +93,7 @@ public class MainCmsInvokerTest
         var invoker = CreateInvoker(handler);
 
         // act
-        var either = await invoker.Invoke<CollectionType<Article>>(new GetArticles(new Pagination
+        var either = await invoker.Invoke<CollectionType<object>>(new GetArticles(new Pagination
         {
             Page = 1,
             Size = 10
@@ -111,7 +112,7 @@ public class MainCmsInvokerTest
         var invoker = CreateInvoker(handler);
 
         // act
-        var either = await invoker.Invoke<CollectionType<Article>>(new GetArticles(new Pagination
+        var either = await invoker.Invoke<CollectionType<object>>(new GetArticles(new Pagination
         {
             Page = 1,
             Size = 10
@@ -130,7 +131,7 @@ public class MainCmsInvokerTest
         var invoker = CreateInvoker(handler);
 
         // act
-        var either = await invoker.Invoke<CollectionType<Article>>(new GetArticles(new Pagination
+        var either = await invoker.Invoke<CollectionType<object>>(new GetArticles(new Pagination
         {
             Page = 1,
             Size = 10
@@ -154,7 +155,7 @@ public class MainCmsInvokerTest
         var invoker = CreateInvoker(handler);
 
         // act
-        var either = await invoker.Invoke<SingleType<Article>>(new GetArticle("sample", "sample-token"));
+        var either = await invoker.Invoke<SingleType<object>>(new GetArticle("sample", "sample-token"));
 
         // assert
         var error = Assert.IsType<CmsEitherError>(either);
@@ -171,7 +172,7 @@ public class MainCmsInvokerTest
         var invoker = CreateInvoker(handler);
 
         // act
-        var either = await invoker.Invoke<SingleType<Article>>(new GetArticle("sample", "sample-token"));
+        var either = await invoker.Invoke<SingleType<object>>(new GetArticle("sample", "sample-token"));
 
         // assert
         var error = Assert.IsType<CmsEitherError>(either);
@@ -188,7 +189,7 @@ public class MainCmsInvokerTest
         var invoker = CreateInvoker(handler);
 
         // act
-        await invoker.Invoke<CollectionType<Article>>(new GetArticles(new Pagination
+        await invoker.Invoke<CollectionType<object>>(new GetArticles(new Pagination
         {
             Page = 2,
             Size = 5

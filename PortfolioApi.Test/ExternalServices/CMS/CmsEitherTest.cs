@@ -9,13 +9,13 @@ public class CmsEitherTest
     public void Ok_carries_the_status_code_and_the_value()
     {
         // arrange
-        var collection = new CollectionType<Article>
+        var collection = new CollectionType<object>
         {
             Data = []
         };
 
         // act
-        var either = new CmsEitherOk<CollectionType<Article>>(StatusCodes.Status200OK, collection);
+        var either = new CmsEitherOk<CollectionType<object>>(StatusCodes.Status200OK, collection);
 
         // assert
         Assert.IsAssignableFrom<CmsEither>(either);

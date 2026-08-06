@@ -20,17 +20,17 @@ public class DefaultProfileArticleTest
         // arrange
         var service = new DefaultProfileArticle(_cmsInvoker, _profileCms);
         var id = Guid.NewGuid();
-        var collection = new CollectionType<Article>
+        var collection = new CollectionType<object>
         {
             Data =
             [
-                new Article
+                new
                 {
                     Id = 1,
                     Title = "Sample",
                     Slug = "sample"
                 },
-                new Article
+                new
                 {
                     Id = 2,
                     Title = "Sample",
@@ -57,8 +57,8 @@ public class DefaultProfileArticleTest
                 Name = "Sample",
                 Token = "sample-token"
             });
-        _cmsInvoker.Invoke<CollectionType<Article>>(Arg.Any<ICmsContent>())
-            .Returns(new CmsEitherOk<CollectionType<Article>>(StatusCodes.Status200OK, collection));
+        _cmsInvoker.Invoke<CollectionType<object>>(Arg.Any<ICmsContent>())
+            .Returns(new CmsEitherOk<CollectionType<object>>(StatusCodes.Status200OK, collection));
 
         // act
         var result = await service.GetProfileArticles(id, new Pagination
@@ -68,7 +68,7 @@ public class DefaultProfileArticleTest
         });
 
         // assert
-        Assert.IsType<ProducesEntityGood<CollectionType<Article>>>(result);
+        Assert.IsType<ProducesEntityGood<CollectionType<object>>>(result);
         Assert.Same(collection, result.Entity);
         Assert.Equal(StatusCodes.Status200OK, result.StatusCode);
         Assert.Equal(2, result.Entity!.Data!.Count);
@@ -92,13 +92,13 @@ public class DefaultProfileArticleTest
         });
 
         // assert
-        Assert.IsType<ProducesEntityFail<CollectionType<Article>>>(result);
+        Assert.IsType<ProducesEntityFail<CollectionType<object>>>(result);
         Assert.Equal(StatusCodes.Status404NotFound, result.StatusCode);
         Assert.Equal("Not Found", result.Error);
         Assert.Equal("Profile not found", result.Description);
         Assert.False(result.Success);
         await _cmsInvoker.DidNotReceive()
-            .Invoke<CollectionType<Article>>(Arg.Any<ICmsContent>());
+            .Invoke<CollectionType<object>>(Arg.Any<ICmsContent>());
     }
 
     [Fact]
@@ -113,7 +113,7 @@ public class DefaultProfileArticleTest
             {
                 Token = "sample-token"
             });
-        _cmsInvoker.Invoke<CollectionType<Article>>(Arg.Any<ICmsContent>())
+        _cmsInvoker.Invoke<CollectionType<object>>(Arg.Any<ICmsContent>())
             .Returns(new CmsEitherEmpty(StatusCodes.Status200OK));
 
         // act
@@ -124,7 +124,7 @@ public class DefaultProfileArticleTest
         });
 
         // assert
-        Assert.IsType<ProducesEntityFail<CollectionType<Article>>>(result);
+        Assert.IsType<ProducesEntityFail<CollectionType<object>>>(result);
         Assert.Equal(StatusCodes.Status500InternalServerError, result.StatusCode);
         Assert.Equal("Unknown Error", result.Error);
         Assert.Equal("Something went wrong when fetching articles", result.Description);
@@ -142,7 +142,7 @@ public class DefaultProfileArticleTest
             {
                 Token = "sample-token"
             });
-        _cmsInvoker.Invoke<CollectionType<Article>>(Arg.Any<ICmsContent>())
+        _cmsInvoker.Invoke<CollectionType<object>>(Arg.Any<ICmsContent>())
             .Returns(new CmsEitherError(StatusCodes.Status403Forbidden, "ForbiddenError", "No access to articles"));
 
         // act
@@ -153,7 +153,7 @@ public class DefaultProfileArticleTest
         });
 
         // assert
-        Assert.IsType<ProducesEntityFail<CollectionType<Article>>>(result);
+        Assert.IsType<ProducesEntityFail<CollectionType<object>>>(result);
         Assert.Equal(StatusCodes.Status403Forbidden, result.StatusCode);
         Assert.Equal("ForbiddenError", result.Error);
         Assert.Equal("No access to articles", result.Description);
@@ -172,9 +172,9 @@ public class DefaultProfileArticleTest
             {
                 Token = "sample-token"
             });
-        _cmsInvoker.Invoke<CollectionType<Article>>(Arg.Do<ICmsContent>(content => captured = content))
-            .Returns(new CmsEitherOk<CollectionType<Article>>(StatusCodes.Status200OK,
-                new CollectionType<Article>()));
+        _cmsInvoker.Invoke<CollectionType<object>>(Arg.Do<ICmsContent>(content => captured = content))
+            .Returns(new CmsEitherOk<CollectionType<object>>(StatusCodes.Status200OK,
+                new CollectionType<object>()));
 
         // act
         await service.GetProfileArticles(id, new Pagination
@@ -206,9 +206,9 @@ public class DefaultProfileArticleTest
             {
                 Token = null
             });
-        _cmsInvoker.Invoke<CollectionType<Article>>(Arg.Do<ICmsContent>(content => captured = content))
-            .Returns(new CmsEitherOk<CollectionType<Article>>(StatusCodes.Status200OK,
-                new CollectionType<Article>()));
+        _cmsInvoker.Invoke<CollectionType<object>>(Arg.Do<ICmsContent>(content => captured = content))
+            .Returns(new CmsEitherOk<CollectionType<object>>(StatusCodes.Status200OK,
+                new CollectionType<object>()));
 
         // act
         await service.GetProfileArticles(id, new Pagination
@@ -228,9 +228,9 @@ public class DefaultProfileArticleTest
         // arrange
         var service = new DefaultProfileArticle(_cmsInvoker, _profileCms);
         var id = Guid.NewGuid();
-        var single = new SingleType<Article>
+        var single = new SingleType<object>
         {
-            Data = new Article
+            Data = new
             {
                 Id = 1,
                 Title = "Sample",
@@ -243,17 +243,17 @@ public class DefaultProfileArticleTest
             {
                 Token = "sample-token"
             });
-        _cmsInvoker.Invoke<SingleType<Article>>(Arg.Any<ICmsContent>())
-            .Returns(new CmsEitherOk<SingleType<Article>>(StatusCodes.Status200OK, single));
+        _cmsInvoker.Invoke<SingleType<object>>(Arg.Any<ICmsContent>())
+            .Returns(new CmsEitherOk<SingleType<object>>(StatusCodes.Status200OK, single));
 
         // act
         var result = await service.GetProfileArticle(id, "sample");
 
         // assert
-        Assert.IsType<ProducesEntityGood<SingleType<Article>>>(result);
+        Assert.IsType<ProducesEntityGood<SingleType<object>>>(result);
         Assert.Same(single, result.Entity);
         Assert.Equal(StatusCodes.Status200OK, result.StatusCode);
-        Assert.Equal("sample", result.Entity!.Data!.Slug);
+        Assert.Same(single.Data, result.Entity!.Data);
     }
 
     [Fact]
@@ -269,13 +269,13 @@ public class DefaultProfileArticleTest
         var result = await service.GetProfileArticle(Guid.NewGuid(), "sample");
 
         // assert
-        Assert.IsType<ProducesEntityFail<SingleType<Article>>>(result);
+        Assert.IsType<ProducesEntityFail<SingleType<object>>>(result);
         Assert.Equal(StatusCodes.Status404NotFound, result.StatusCode);
         Assert.Equal("Not Found", result.Error);
         Assert.Equal("Profile not found", result.Description);
         Assert.False(result.Success);
         await _cmsInvoker.DidNotReceive()
-            .Invoke<SingleType<Article>>(Arg.Any<ICmsContent>());
+            .Invoke<SingleType<object>>(Arg.Any<ICmsContent>());
     }
 
     [Fact]
@@ -290,14 +290,14 @@ public class DefaultProfileArticleTest
             {
                 Token = "sample-token"
             });
-        _cmsInvoker.Invoke<SingleType<Article>>(Arg.Any<ICmsContent>())
+        _cmsInvoker.Invoke<SingleType<object>>(Arg.Any<ICmsContent>())
             .Returns(new CmsEitherEmpty(StatusCodes.Status200OK));
 
         // act
         var result = await service.GetProfileArticle(id, "sample");
 
         // assert
-        Assert.IsType<ProducesEntityFail<SingleType<Article>>>(result);
+        Assert.IsType<ProducesEntityFail<SingleType<object>>>(result);
         Assert.Equal(StatusCodes.Status500InternalServerError, result.StatusCode);
         Assert.Equal("Unknown Error", result.Error);
         Assert.Equal("Something went wrong when fetching the article", result.Description);
@@ -315,14 +315,14 @@ public class DefaultProfileArticleTest
             {
                 Token = "sample-token"
             });
-        _cmsInvoker.Invoke<SingleType<Article>>(Arg.Any<ICmsContent>())
+        _cmsInvoker.Invoke<SingleType<object>>(Arg.Any<ICmsContent>())
             .Returns(new CmsEitherError(StatusCodes.Status404NotFound, "NotFoundError", "Not Found"));
 
         // act
         var result = await service.GetProfileArticle(id, "sample");
 
         // assert
-        Assert.IsType<ProducesEntityFail<SingleType<Article>>>(result);
+        Assert.IsType<ProducesEntityFail<SingleType<object>>>(result);
         Assert.Equal(StatusCodes.Status404NotFound, result.StatusCode);
         Assert.Equal("NotFoundError", result.Error);
         Assert.Equal("Not Found", result.Description);
@@ -341,8 +341,8 @@ public class DefaultProfileArticleTest
             {
                 Token = "sample-token"
             });
-        _cmsInvoker.Invoke<SingleType<Article>>(Arg.Do<ICmsContent>(content => captured = content))
-            .Returns(new CmsEitherOk<SingleType<Article>>(StatusCodes.Status200OK, new SingleType<Article>()));
+        _cmsInvoker.Invoke<SingleType<object>>(Arg.Do<ICmsContent>(content => captured = content))
+            .Returns(new CmsEitherOk<SingleType<object>>(StatusCodes.Status200OK, new SingleType<object>()));
 
         // act
         await service.GetProfileArticle(id, "sample-slug");

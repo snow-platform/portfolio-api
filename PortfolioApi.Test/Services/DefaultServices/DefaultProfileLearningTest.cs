@@ -20,17 +20,17 @@ public class DefaultProfileLearningTest
         // arrange
         var service = new DefaultProfileLearning(_cmsInvoker, _profileCms);
         var id = Guid.NewGuid();
-        var collection = new CollectionType<Learn>
+        var collection = new CollectionType<object>
         {
             Data =
             [
-                new Learn
+                new
                 {
                     Id = 1,
                     Title = "Sample",
                     Slug = "sample"
                 },
-                new Learn
+                new
                 {
                     Id = 2,
                     Title = "Sample",
@@ -57,8 +57,8 @@ public class DefaultProfileLearningTest
                 Name = "Sample",
                 Token = "sample-token"
             });
-        _cmsInvoker.Invoke<CollectionType<Learn>>(Arg.Any<ICmsContent>())
-            .Returns(new CmsEitherOk<CollectionType<Learn>>(StatusCodes.Status200OK, collection));
+        _cmsInvoker.Invoke<CollectionType<object>>(Arg.Any<ICmsContent>())
+            .Returns(new CmsEitherOk<CollectionType<object>>(StatusCodes.Status200OK, collection));
 
         // act
         var result = await service.GetProfileLearnings(id, new Pagination
@@ -68,7 +68,7 @@ public class DefaultProfileLearningTest
         });
 
         // assert
-        Assert.IsType<ProducesEntityGood<CollectionType<Learn>>>(result);
+        Assert.IsType<ProducesEntityGood<CollectionType<object>>>(result);
         Assert.Same(collection, result.Entity);
         Assert.Equal(StatusCodes.Status200OK, result.StatusCode);
         Assert.Equal(2, result.Entity!.Data!.Count);
@@ -92,13 +92,13 @@ public class DefaultProfileLearningTest
         });
 
         // assert
-        Assert.IsType<ProducesEntityFail<CollectionType<Learn>>>(result);
+        Assert.IsType<ProducesEntityFail<CollectionType<object>>>(result);
         Assert.Equal(StatusCodes.Status404NotFound, result.StatusCode);
         Assert.Equal("Not Found", result.Error);
         Assert.Equal("Profile not found", result.Description);
         Assert.False(result.Success);
         await _cmsInvoker.DidNotReceive()
-            .Invoke<CollectionType<Learn>>(Arg.Any<ICmsContent>());
+            .Invoke<CollectionType<object>>(Arg.Any<ICmsContent>());
     }
 
     [Fact]
@@ -113,7 +113,7 @@ public class DefaultProfileLearningTest
             {
                 Token = "sample-token"
             });
-        _cmsInvoker.Invoke<CollectionType<Learn>>(Arg.Any<ICmsContent>())
+        _cmsInvoker.Invoke<CollectionType<object>>(Arg.Any<ICmsContent>())
             .Returns(new CmsEitherEmpty(StatusCodes.Status200OK));
 
         // act
@@ -124,7 +124,7 @@ public class DefaultProfileLearningTest
         });
 
         // assert
-        Assert.IsType<ProducesEntityFail<CollectionType<Learn>>>(result);
+        Assert.IsType<ProducesEntityFail<CollectionType<object>>>(result);
         Assert.Equal(StatusCodes.Status500InternalServerError, result.StatusCode);
         Assert.Equal("Unknown Error", result.Error);
         Assert.Equal("Something went wrong when fetching learnings", result.Description);
@@ -142,7 +142,7 @@ public class DefaultProfileLearningTest
             {
                 Token = "sample-token"
             });
-        _cmsInvoker.Invoke<CollectionType<Learn>>(Arg.Any<ICmsContent>())
+        _cmsInvoker.Invoke<CollectionType<object>>(Arg.Any<ICmsContent>())
             .Returns(new CmsEitherError(StatusCodes.Status403Forbidden, "ForbiddenError", "No access to reviews"));
 
         // act
@@ -153,7 +153,7 @@ public class DefaultProfileLearningTest
         });
 
         // assert
-        Assert.IsType<ProducesEntityFail<CollectionType<Learn>>>(result);
+        Assert.IsType<ProducesEntityFail<CollectionType<object>>>(result);
         Assert.Equal(StatusCodes.Status403Forbidden, result.StatusCode);
         Assert.Equal("ForbiddenError", result.Error);
         Assert.Equal("No access to reviews", result.Description);
@@ -172,8 +172,8 @@ public class DefaultProfileLearningTest
             {
                 Token = "sample-token"
             });
-        _cmsInvoker.Invoke<CollectionType<Learn>>(Arg.Do<ICmsContent>(content => captured = content))
-            .Returns(new CmsEitherOk<CollectionType<Learn>>(StatusCodes.Status200OK, new CollectionType<Learn>()));
+        _cmsInvoker.Invoke<CollectionType<object>>(Arg.Do<ICmsContent>(content => captured = content))
+            .Returns(new CmsEitherOk<CollectionType<object>>(StatusCodes.Status200OK, new CollectionType<object>()));
 
         // act
         await service.GetProfileLearnings(id, new Pagination
@@ -205,8 +205,8 @@ public class DefaultProfileLearningTest
             {
                 Token = null
             });
-        _cmsInvoker.Invoke<CollectionType<Learn>>(Arg.Do<ICmsContent>(content => captured = content))
-            .Returns(new CmsEitherOk<CollectionType<Learn>>(StatusCodes.Status200OK, new CollectionType<Learn>()));
+        _cmsInvoker.Invoke<CollectionType<object>>(Arg.Do<ICmsContent>(content => captured = content))
+            .Returns(new CmsEitherOk<CollectionType<object>>(StatusCodes.Status200OK, new CollectionType<object>()));
 
         // act
         await service.GetProfileLearnings(id, new Pagination
@@ -226,9 +226,9 @@ public class DefaultProfileLearningTest
         // arrange
         var service = new DefaultProfileLearning(_cmsInvoker, _profileCms);
         var id = Guid.NewGuid();
-        var single = new SingleType<Learn>
+        var single = new SingleType<object>
         {
-            Data = new Learn
+            Data = new
             {
                 Id = 1,
                 Title = "Sample",
@@ -241,17 +241,17 @@ public class DefaultProfileLearningTest
             {
                 Token = "sample-token"
             });
-        _cmsInvoker.Invoke<SingleType<Learn>>(Arg.Any<ICmsContent>())
-            .Returns(new CmsEitherOk<SingleType<Learn>>(StatusCodes.Status200OK, single));
+        _cmsInvoker.Invoke<SingleType<object>>(Arg.Any<ICmsContent>())
+            .Returns(new CmsEitherOk<SingleType<object>>(StatusCodes.Status200OK, single));
 
         // act
         var result = await service.GetProfileLearning(id, "sample");
 
         // assert
-        Assert.IsType<ProducesEntityGood<SingleType<Learn>>>(result);
+        Assert.IsType<ProducesEntityGood<SingleType<object>>>(result);
         Assert.Same(single, result.Entity);
         Assert.Equal(StatusCodes.Status200OK, result.StatusCode);
-        Assert.Equal("sample", result.Entity!.Data!.Slug);
+        Assert.Same(single.Data, result.Entity!.Data);
     }
 
     [Fact]
@@ -267,13 +267,13 @@ public class DefaultProfileLearningTest
         var result = await service.GetProfileLearning(Guid.NewGuid(), "sample");
 
         // assert
-        Assert.IsType<ProducesEntityFail<SingleType<Learn>>>(result);
+        Assert.IsType<ProducesEntityFail<SingleType<object>>>(result);
         Assert.Equal(StatusCodes.Status404NotFound, result.StatusCode);
         Assert.Equal("Not Found", result.Error);
         Assert.Equal("Profile not found", result.Description);
         Assert.False(result.Success);
         await _cmsInvoker.DidNotReceive()
-            .Invoke<SingleType<Learn>>(Arg.Any<ICmsContent>());
+            .Invoke<SingleType<object>>(Arg.Any<ICmsContent>());
     }
 
     [Fact]
@@ -288,14 +288,14 @@ public class DefaultProfileLearningTest
             {
                 Token = "sample-token"
             });
-        _cmsInvoker.Invoke<SingleType<Learn>>(Arg.Any<ICmsContent>())
+        _cmsInvoker.Invoke<SingleType<object>>(Arg.Any<ICmsContent>())
             .Returns(new CmsEitherEmpty(StatusCodes.Status200OK));
 
         // act
         var result = await service.GetProfileLearning(id, "sample");
 
         // assert
-        Assert.IsType<ProducesEntityFail<SingleType<Learn>>>(result);
+        Assert.IsType<ProducesEntityFail<SingleType<object>>>(result);
         Assert.Equal(StatusCodes.Status500InternalServerError, result.StatusCode);
         Assert.Equal("Unknown Error", result.Error);
         Assert.Equal("Something went wrong when fetching the learning", result.Description);
@@ -313,14 +313,14 @@ public class DefaultProfileLearningTest
             {
                 Token = "sample-token"
             });
-        _cmsInvoker.Invoke<SingleType<Learn>>(Arg.Any<ICmsContent>())
+        _cmsInvoker.Invoke<SingleType<object>>(Arg.Any<ICmsContent>())
             .Returns(new CmsEitherError(StatusCodes.Status404NotFound, "NotFoundError", "Not Found"));
 
         // act
         var result = await service.GetProfileLearning(id, "sample");
 
         // assert
-        Assert.IsType<ProducesEntityFail<SingleType<Learn>>>(result);
+        Assert.IsType<ProducesEntityFail<SingleType<object>>>(result);
         Assert.Equal(StatusCodes.Status404NotFound, result.StatusCode);
         Assert.Equal("NotFoundError", result.Error);
         Assert.Equal("Not Found", result.Description);
@@ -339,8 +339,8 @@ public class DefaultProfileLearningTest
             {
                 Token = "sample-token"
             });
-        _cmsInvoker.Invoke<SingleType<Learn>>(Arg.Do<ICmsContent>(content => captured = content))
-            .Returns(new CmsEitherOk<SingleType<Learn>>(StatusCodes.Status200OK, new SingleType<Learn>()));
+        _cmsInvoker.Invoke<SingleType<object>>(Arg.Do<ICmsContent>(content => captured = content))
+            .Returns(new CmsEitherOk<SingleType<object>>(StatusCodes.Status200OK, new SingleType<object>()));
 
         // act
         await service.GetProfileLearning(id, "sample-slug");
