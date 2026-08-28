@@ -81,4 +81,14 @@ public class ProducesEntityTest
         // assert
         Assert.False(produces.Success);
     }
+
+    [Fact]
+    public void Fail_over_a_reference_type()
+    {
+        // arrange & act
+        var produces = new ProducesEntityFail<object>(StatusCodes.Status404NotFound);
+
+        // assert
+        Assert.False(produces.Success);
+    }
 }

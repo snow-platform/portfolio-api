@@ -13,7 +13,7 @@ public class ProducesEntity<T>
 
     public bool Success
     {
-        get => Entity is not null || EqualityComparer<T>.Default.Equals(Entity, default) is false;
+        get => EqualityComparer<T>.Default.Equals(Entity, default) is false;
     }
 }
 

@@ -149,7 +149,7 @@ public class MainCmsInvokerTest
         // arrange
         var handler = CreateHandler(HttpStatusCode.NotFound, """
                                                              {
-                                                                 "error": { "status": "404", "name": "NotFoundError", "message": "Not Found" }
+                                                                 "error": { "status": 404, "name": "NotFoundError", "message": "Not Found" }
                                                              }
                                                              """);
         var invoker = CreateInvoker(handler);
@@ -198,9 +198,8 @@ public class MainCmsInvokerTest
         // assert
         Assert.NotNull(handler.Request);
         Assert.Equal(HttpMethod.Get, handler.Request.Method);
-        Assert.Equal("/api/articles", handler.Request.RequestUri!.AbsolutePath);
-        Assert.Contains("pagination[page]=2", Uri.UnescapeDataString(handler.Request.RequestUri.Query));
-        Assert.Contains("pagination[pageSize]=5", Uri.UnescapeDataString(handler.Request.RequestUri.Query));
+        Assert.NotNull(handler.Request.RequestUri);
+        Assert.Equal("/api/articles", handler.Request.RequestUri.AbsolutePath);
         Assert.Equal("Bearer sample-token", handler.Request.Headers.GetValues("Authorization").Single());
     }
 

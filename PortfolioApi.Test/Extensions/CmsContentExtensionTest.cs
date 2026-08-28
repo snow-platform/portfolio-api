@@ -20,7 +20,7 @@ public class CmsContentExtensionTest
         Assert.Equal(HttpMethod.Get, request.Method);
         Assert.NotNull(request.RequestUri);
         Assert.False(request.RequestUri.IsAbsoluteUri);
-        Assert.Equal("/api/articles/sample-slug?populate=*", request.RequestUri.OriginalString);
+        Assert.Equal("/api/articles/sample-slug", request.RequestUri.OriginalString);
         Assert.Null(request.Content);
     }
 

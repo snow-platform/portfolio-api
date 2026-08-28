@@ -183,10 +183,11 @@ public class DefaultProfileLearningTest
         });
 
         // assert
+        Assert.NotNull(captured);
         Assert.IsType<GetReviews>(captured);
         Assert.Equal(
-            "/api/reviews?populate=*&pagination[page]=2&pagination[pageSize]=5&sort[0]=publishedAt:desc",
-            captured!.Endpoint);
+            "/api/reviews?populate=category&pagination[page]=2&pagination[pageSize]=5&sort[0]=publishedAt:desc",
+            captured.Endpoint);
         Assert.Equal("Bearer sample-token", captured.Headers["Authorization"]);
         await _profileCms.Received(1)
             .FindFromProfileExternalId(id);
@@ -346,8 +347,11 @@ public class DefaultProfileLearningTest
         await service.GetProfileLearning(id, "sample-slug");
 
         // assert
+        Assert.NotNull(captured);
         Assert.IsType<GetReview>(captured);
-        Assert.Equal("/api/reviews/sample-slug?populate=*", captured!.Endpoint);
+        Assert.Equal(
+            "/api/reviews/sample-slug?populate=cover&populate=author&populate=author.avatar&populate=category&populate=blocks&populate=blocks.file&populate=blocks.files",
+            captured.Endpoint);
         Assert.Equal("Bearer sample-token", captured.Headers["Authorization"]);
         await _profileCms.Received(1)
             .FindFromProfileExternalId(id);

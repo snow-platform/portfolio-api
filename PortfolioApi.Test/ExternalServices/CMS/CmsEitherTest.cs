@@ -18,7 +18,7 @@ public class CmsEitherTest
         var either = new CmsEitherOk<CollectionType<object>>(StatusCodes.Status200OK, collection);
 
         // assert
-        Assert.IsAssignableFrom<CmsEither>(either);
+        Assert.IsType<CmsEither>(either, exactMatch: false);
         Assert.Equal(StatusCodes.Status200OK, either.StatusCode);
         Assert.Same(collection, either.Value);
     }
@@ -30,7 +30,7 @@ public class CmsEitherTest
         var either = new CmsEitherEmpty(StatusCodes.Status204NoContent);
 
         // assert
-        Assert.IsAssignableFrom<CmsEither>(either);
+        Assert.IsType<CmsEither>(either, exactMatch: false);
         Assert.Equal(StatusCodes.Status204NoContent, either.StatusCode);
     }
 
@@ -41,7 +41,7 @@ public class CmsEitherTest
         var either = new CmsEitherError(StatusCodes.Status404NotFound, "NotFoundError", "Not Found");
 
         // assert
-        Assert.IsAssignableFrom<CmsEither>(either);
+        Assert.IsType<CmsEither>(either, exactMatch: false);
         Assert.Equal(StatusCodes.Status404NotFound, either.StatusCode);
         Assert.Equal("NotFoundError", either.Error);
         Assert.Equal("Not Found", either.Description);

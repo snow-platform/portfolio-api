@@ -173,8 +173,7 @@ public class DefaultProfileArticleTest
                 Token = "sample-token"
             });
         _cmsInvoker.Invoke<CollectionType<object>>(Arg.Do<ICmsContent>(content => captured = content))
-            .Returns(new CmsEitherOk<CollectionType<object>>(StatusCodes.Status200OK,
-                new CollectionType<object>()));
+            .Returns(new CmsEitherOk<CollectionType<object>>(StatusCodes.Status200OK, new CollectionType<object>()));
 
         // act
         await service.GetProfileArticles(id, new Pagination
@@ -184,10 +183,11 @@ public class DefaultProfileArticleTest
         });
 
         // assert
+        Assert.NotNull(captured);
         Assert.IsType<GetArticles>(captured);
         Assert.Equal(
-            "/api/articles?populate=*&pagination[page]=2&pagination[pageSize]=5&sort[0]=publishedAt:desc",
-            captured!.Endpoint);
+            "/api/articles?populate=category&pagination[page]=2&pagination[pageSize]=5&sort[0]=publishedAt:desc",
+            captured.Endpoint);
         Assert.Equal("Bearer sample-token", captured.Headers["Authorization"]);
         await _profileCms.Received(1)
             .FindFromProfileExternalId(id);
@@ -348,8 +348,11 @@ public class DefaultProfileArticleTest
         await service.GetProfileArticle(id, "sample-slug");
 
         // assert
+        Assert.NotNull(captured);
         Assert.IsType<GetArticle>(captured);
-        Assert.Equal("/api/articles/sample-slug?populate=*", captured!.Endpoint);
+        Assert.Equal(
+            "/api/articles/sample-slug?populate=cover&populate=author&populate=author.avatar&populate=category&populate=blocks&populate=blocks.file&populate=blocks.files",
+            captured.Endpoint);
         Assert.Equal("Bearer sample-token", captured.Headers["Authorization"]);
         await _profileCms.Received(1)
             .FindFromProfileExternalId(id);
