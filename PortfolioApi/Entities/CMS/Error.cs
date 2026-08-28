@@ -5,7 +5,7 @@ namespace PortfolioApi.Entities.CMS;
 public class Error
 {
     [JsonPropertyName("status")]
-    public string? Status { get; set; }
+    public int Status { get; set; }
 
     [JsonPropertyName("name")]
     public string? Name { get; set; }

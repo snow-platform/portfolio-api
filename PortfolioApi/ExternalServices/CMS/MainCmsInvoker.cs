@@ -43,11 +43,11 @@ public class MainCmsInvoker : ICmsInvoker
         }
         catch (TimeoutException ex)
         {
-            return new CmsEitherError(StatusCodes.Status500InternalServerError, ex.Message, ex.StackTrace ?? "");
+            return new CmsEitherError(StatusCodes.Status500InternalServerError, ex.Source?? "", ex.Message);
         }
         catch (JsonException ex)
         {
-            return new CmsEitherError(StatusCodes.Status500InternalServerError, ex.Message, ex.StackTrace ?? "");
+            return new CmsEitherError(StatusCodes.Status500InternalServerError, ex.Source ?? "", ex.Message);
         }
     }
 }
