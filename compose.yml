@@ -1,6 +1,8 @@
 services:
   portfolio-api:
     container_name: portfolio-api
+    environment:
+      - ConnectionStrings__Main=${POSTGRESQL_MAIN}
     image: ghcr.io/snow-platform/portfolio-api:${VERSION}
     restart: unless-stopped
     build:
