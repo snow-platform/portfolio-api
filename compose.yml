@@ -1,16 +1,10 @@
 services:
   portfolio-api:
     container_name: portfolio-api
+    image: ghcr.io/snow-platform/portfolio-api:${VERSION}
     environment:
       - ConnectionStrings__Main=${POSTGRESQL_MAIN}
-    image: ghcr.io/snow-platform/portfolio-api:${VERSION}
     restart: unless-stopped
-    build:
-      context: .
-      dockerfile: PortfolioApi/Dockerfile
-      platforms:
-        - linux/amd64
-        - linux/arm64
     cpu_count: 1
     mem_limit: 512M
     mem_reservation: 256M
