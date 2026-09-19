@@ -7,21 +7,21 @@ public class Create_106_ProfileCV : Migration
 {
     public override void Up()
     {
-        Create.Table("ProfileCV")
-            .WithColumn("Id").AsInt32().NotNullable().PrimaryKey().Identity()
-            .WithColumn("ProfileId").AsInt32().NotNullable()
-            .WithColumn("CV").AsString(256).Nullable()
-            .WithColumn("CreatedAt").AsDateTime2().NotNullable();
+        Create.Table("profile_cv")
+            .WithColumn("id").AsInt32().NotNullable().PrimaryKey().Identity()
+            .WithColumn("profile_id").AsInt32().NotNullable()
+            .WithColumn("cv").AsString(256).Nullable()
+            .WithColumn("created_at").AsDateTime2().NotNullable();
 
-        Create.ForeignKey("FK_ProfileCV_Profile")
-            .FromTable("ProfileCV").ForeignColumn("ProfileId")
-            .ToTable("Profile").PrimaryColumn("Id");
+        Create.ForeignKey("fk_profile_cv_profile")
+            .FromTable("profile_cv").ForeignColumn("profile_id")
+            .ToTable("profile").PrimaryColumn("id");
     }
 
     public override void Down()
     {
-        Delete.ForeignKey("FK_ProfileCV_Profile")
-            .OnTable("ProfileCV");
-        Delete.Table("ProfileCV");
+        Delete.ForeignKey("fk_profile_cv_profile")
+            .OnTable("profile_cv");
+        Delete.Table("profile_cv");
     }
 }

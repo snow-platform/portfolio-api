@@ -9,15 +9,15 @@ public class Create_101_User : Migration
 {
     public override void Up()
     {
-        Create.Table("User")
-            .WithColumn("Id").AsInt32().NotNullable().PrimaryKey().Identity()
-            .WithColumn("Email").AsString(256).Nullable()
-            .WithColumn("CreatedAt").AsDateTime2().NotNullable()
-            .WithColumn("UpdatedAt").AsDateTime2().NotNullable();
+        Create.Table("user")
+            .WithColumn("id").AsInt32().NotNullable().PrimaryKey().Identity()
+            .WithColumn("email").AsString(256).Nullable()
+            .WithColumn("created_at").AsDateTime2().NotNullable()
+            .WithColumn("updated_at").AsDateTime2().NotNullable();
     }
 
     public override void Down()
     {
-        Delete.Table("User");
+        Delete.Table("user");
     }
 }

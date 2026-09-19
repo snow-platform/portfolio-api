@@ -7,337 +7,337 @@ public class Insert_1010_ProjectTechnology : Migration
 {
     public override void Up()
     {
-        Insert.IntoTable("ProjectTechnology")
+        Insert.IntoTable("project_technology")
             .Rows([
                 // 1 - SetldPay CI/CD Pipeline
                 new
                 {
-                    ProjectId = 1,
-                    Tech = "GitHub Actions"
+                    project_id = 1,
+                    tech = "GitHub Actions"
                 },
                 new
                 {
-                    ProjectId = 1,
-                    Tech = "CI/CD"
+                    project_id = 1,
+                    tech = "CI/CD"
                 },
                 new
                 {
-                    ProjectId = 1,
-                    Tech = "Azure"
+                    project_id = 1,
+                    tech = "Azure"
                 },
 
                 // 2 - InComm Integration API
                 new
                 {
-                    ProjectId = 2,
-                    Tech = ".NET"
+                    project_id = 2,
+                    tech = ".NET"
                 },
                 new
                 {
-                    ProjectId = 2,
-                    Tech = "Dapper"
+                    project_id = 2,
+                    tech = "Dapper"
                 },
                 new
                 {
-                    ProjectId = 2,
-                    Tech = "JWT"
+                    project_id = 2,
+                    tech = "JWT"
                 },
                 new
                 {
-                    ProjectId = 2,
-                    Tech = "Azure Key Vault"
+                    project_id = 2,
+                    tech = "Azure Key Vault"
                 },
 
                 // 3 - Banking Integration API
                 new
                 {
-                    ProjectId = 3,
-                    Tech = ".NET"
+                    project_id = 3,
+                    tech = ".NET"
                 },
                 new
                 {
-                    ProjectId = 3,
-                    Tech = "Entity Framework"
+                    project_id = 3,
+                    tech = "Entity Framework"
                 },
                 new
                 {
-                    ProjectId = 3,
-                    Tech = "SQL Server"
+                    project_id = 3,
+                    tech = "SQL Server"
                 },
                 new
                 {
-                    ProjectId = 3,
-                    Tech = "Redis"
+                    project_id = 3,
+                    tech = "Redis"
                 },
                 new
                 {
-                    ProjectId = 3,
-                    Tech = "SignalR"
+                    project_id = 3,
+                    tech = "SignalR"
                 },
                 new
                 {
-                    ProjectId = 3,
-                    Tech = "Azure Key Vault"
+                    project_id = 3,
+                    tech = "Azure Key Vault"
                 },
 
                 // 4 - Card Program Management API
                 new
                 {
-                    ProjectId = 4,
-                    Tech = ".NET"
+                    project_id = 4,
+                    tech = ".NET"
                 },
                 new
                 {
-                    ProjectId = 4,
-                    Tech = "Entity Framework"
+                    project_id = 4,
+                    tech = "Entity Framework"
                 },
                 new
                 {
-                    ProjectId = 4,
-                    Tech = "SQL Server"
+                    project_id = 4,
+                    tech = "SQL Server"
                 },
                 new
                 {
-                    ProjectId = 4,
-                    Tech = "Frontegg"
+                    project_id = 4,
+                    tech = "Frontegg"
                 },
                 new
                 {
-                    ProjectId = 4,
-                    Tech = "Azure Key Vault"
+                    project_id = 4,
+                    tech = "Azure Key Vault"
                 },
 
                 // 5 - Card Program Management Portal
                 new
                 {
-                    ProjectId = 5,
-                    Tech = "Angular"
+                    project_id = 5,
+                    tech = "Angular"
                 },
                 new
                 {
-                    ProjectId = 5,
-                    Tech = "Typescript"
+                    project_id = 5,
+                    tech = "Typescript"
                 },
                 new
                 {
-                    ProjectId = 5,
-                    Tech = "TailwindCSS"
+                    project_id = 5,
+                    tech = "TailwindCSS"
                 },
                 new
                 {
-                    ProjectId = 5,
-                    Tech = "PrimeNG"
+                    project_id = 5,
+                    tech = "PrimeNG"
                 },
 
                 // 6 - Partner Card Management APIs
                 new
                 {
-                    ProjectId = 6,
-                    Tech = ".NET"
+                    project_id = 6,
+                    tech = ".NET"
                 },
                 new
                 {
-                    ProjectId = 6,
-                    Tech = "SQL Server"
+                    project_id = 6,
+                    tech = "SQL Server"
                 },
                 new
                 {
-                    ProjectId = 6,
-                    Tech = "PostgreSQL"
+                    project_id = 6,
+                    tech = "PostgreSQL"
                 },
                 new
                 {
-                    ProjectId = 6,
-                    Tech = "Azure Key Vault"
+                    project_id = 6,
+                    tech = "Azure Key Vault"
                 },
 
                 // 7 - Card Management Portal Platform
                 new
                 {
-                    ProjectId = 7,
-                    Tech = "Angular"
+                    project_id = 7,
+                    tech = "Angular"
                 },
                 new
                 {
-                    ProjectId = 7,
-                    Tech = "Typescript"
+                    project_id = 7,
+                    tech = "Typescript"
                 },
                 new
                 {
-                    ProjectId = 7,
-                    Tech = "TailwindCSS"
+                    project_id = 7,
+                    tech = "TailwindCSS"
                 },
                 new
                 {
-                    ProjectId = 7,
-                    Tech = "PrimeNG"
+                    project_id = 7,
+                    tech = "PrimeNG"
                 },
 
                 // 8 - Standalone .NET Services
                 new
                 {
-                    ProjectId = 8,
-                    Tech = ".NET"
+                    project_id = 8,
+                    tech = ".NET"
                 },
 
                 // 9 - Heavy Machinery Dealer APIs
                 new
                 {
-                    ProjectId = 9,
-                    Tech = ".NET"
+                    project_id = 9,
+                    tech = ".NET"
                 },
                 new
                 {
-                    ProjectId = 9,
-                    Tech = "SQL Server"
+                    project_id = 9,
+                    tech = "SQL Server"
                 },
 
                 // 10 - Heavy Machinery Management App
                 new
                 {
-                    ProjectId = 10,
-                    Tech = ".NET"
+                    project_id = 10,
+                    tech = ".NET"
                 },
                 new
                 {
-                    ProjectId = 10,
-                    Tech = "Blazor"
+                    project_id = 10,
+                    tech = "Blazor"
                 },
                 new
                 {
-                    ProjectId = 10,
-                    Tech = "SQL Server"
+                    project_id = 10,
+                    tech = "SQL Server"
                 },
 
                 // 11 - Heavy Machinery Parts E-Commerce
                 new
                 {
-                    ProjectId = 11,
-                    Tech = ".NET"
+                    project_id = 11,
+                    tech = ".NET"
                 },
                 new
                 {
-                    ProjectId = 11,
-                    Tech = "Blazor"
+                    project_id = 11,
+                    tech = "Blazor"
                 },
                 new
                 {
-                    ProjectId = 11,
-                    Tech = "SQL Server"
+                    project_id = 11,
+                    tech = "SQL Server"
                 },
                 new
                 {
-                    ProjectId = 11,
-                    Tech = "Stripe"
+                    project_id = 11,
+                    tech = "Stripe"
                 },
                 new
                 {
-                    ProjectId = 11,
-                    Tech = "Mailjet"
+                    project_id = 11,
+                    tech = "Mailjet"
                 },
 
                 // 12 - Educational Battle Game
                 new
                 {
-                    ProjectId = 12,
-                    Tech = "Unity3D"
+                    project_id = 12,
+                    tech = "Unity3D"
                 },
                 new
                 {
-                    ProjectId = 12,
-                    Tech = "C#"
+                    project_id = 12,
+                    tech = "C#"
                 },
                 new
                 {
-                    ProjectId = 12,
-                    Tech = ".NET"
+                    project_id = 12,
+                    tech = ".NET"
                 },
 
                 // 13 - Hyper-Casual Games
                 new
                 {
-                    ProjectId = 13,
-                    Tech = "Unity3D"
+                    project_id = 13,
+                    tech = "Unity3D"
                 },
                 new
                 {
-                    ProjectId = 13,
-                    Tech = "C#"
+                    project_id = 13,
+                    tech = "C#"
                 },
 
                 // 14 - Exam Test Application
                 new
                 {
-                    ProjectId = 14,
-                    Tech = "Unity3D"
+                    project_id = 14,
+                    tech = "Unity3D"
                 },
                 new
                 {
-                    ProjectId = 14,
-                    Tech = "C#"
+                    project_id = 14,
+                    tech = "C#"
                 },
 
                 // 15 - Game Content Management System
                 new
                 {
-                    ProjectId = 15,
-                    Tech = ".NET"
+                    project_id = 15,
+                    tech = ".NET"
                 },
                 new
                 {
-                    ProjectId = 15,
-                    Tech = "Java"
+                    project_id = 15,
+                    tech = "Java"
                 },
                 new
                 {
-                    ProjectId = 15,
-                    Tech = "Python"
+                    project_id = 15,
+                    tech = "Python"
                 },
                 new
                 {
-                    ProjectId = 15,
-                    Tech = "Flask"
+                    project_id = 15,
+                    tech = "Flask"
                 },
 
                 // 16 - Member Networking System
                 new
                 {
-                    ProjectId = 16,
-                    Tech = "Laravel"
+                    project_id = 16,
+                    tech = "Laravel"
                 },
                 new
                 {
-                    ProjectId = 16,
-                    Tech = "PHP"
+                    project_id = 16,
+                    tech = "PHP"
                 },
                 new
                 {
-                    ProjectId = 16,
-                    Tech = "MySQL"
+                    project_id = 16,
+                    tech = "MySQL"
                 },
 
                 // 17 - E-Commerce Sub-Site
                 new
                 {
-                    ProjectId = 17,
-                    Tech = "Laravel"
+                    project_id = 17,
+                    tech = "Laravel"
                 },
                 new
                 {
-                    ProjectId = 17,
-                    Tech = "PHP"
+                    project_id = 17,
+                    tech = "PHP"
                 },
                 new
                 {
-                    ProjectId = 17,
-                    Tech = "MySQL"
+                    project_id = 17,
+                    tech = "MySQL"
                 }
             ]);
     }
 
     public override void Down()
     {
-        Delete.FromTable("ProjectTechnology")
+        Delete.FromTable("project_technology")
             .AllRows();
     }
 }

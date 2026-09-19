@@ -9,21 +9,21 @@ public class Insert_1001_User : Migration
 {
     public override void Up()
     {
-        Insert.IntoTable("User")
+        Insert.IntoTable("user")
             .Row(new
             {
-                Email = "estellise.caballero@gmail.com",
-                CreatedAt = DateTime.Now,
-                UpdatedAt = DateTime.Now
+                email = "estellise.caballero@gmail.com",
+                created_at = DateTime.Now,
+                updated_at = DateTime.Now
             });
     }
 
     public override void Down()
     {
-        Delete.FromTable("User")
+        Delete.FromTable("user")
             .Row(new
             {
-                Email = "estellise.caballero@gmail.com"
+                email = "estellise.caballero@gmail.com"
             });
     }
 }

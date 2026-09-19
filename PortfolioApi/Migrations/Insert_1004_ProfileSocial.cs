@@ -8,32 +8,32 @@ public class InsertSocial_1004 : Migration
 {
     public override void Up()
     {
-        Insert.IntoTable("ProfileSocial")
+        Insert.IntoTable("profile_social")
             .Rows([
                 new
                 {
-                    ProfileId = 1,
-                    Name = "LinkedIn",
-                    Link = "https://linkedin.com/in/carlocaballero"
+                    profile_id = 1,
+                    name = "LinkedIn",
+                    link = "https://linkedin.com/in/carlocaballero"
                 },
                 new
                 {
-                    ProfileId = 1,
-                    Name = "GitHub",
-                    Link = "https://github.com/estellise-yukihime"
+                    profile_id = 1,
+                    name = "GitHub",
+                    link = "https://github.com/estellise-yukihime"
                 },
                 new
                 {
-                    ProfileId = 1,
-                    Name = "Email",
-                    Link = "mailto:apply.estellise.caballero@gmail.com"
+                    profile_id = 1,
+                    name = "Email",
+                    link = "mailto:apply.estellise.caballero@gmail.com"
                 }
             ]);
     }
 
     public override void Down()
     {
-        Delete.FromTable("ProfileSocial")
-            .Row(new { ProfileId = 1 });
+        Delete.FromTable("profile_social")
+            .Row(new { profile_id = 1 });
     }
 }

@@ -7,26 +7,26 @@ public class Create_112_ProfileEducation : Migration
 {
     public override void Up()
     {
-        Create.Table("ProfileEducation")
-            .WithColumn("Id").AsInt32().NotNullable().PrimaryKey().Identity()
-            .WithColumn("ProfileId").AsInt32().NotNullable()
-            .WithColumn("Degree").AsString(256).Nullable()
-            .WithColumn("DegreeAbbrev").AsString(256).Nullable()
-            .WithColumn("FieldOfStudy").AsString(256).Nullable()
-            .WithColumn("FieldOfStudyAbbrev").AsString(256).Nullable()
-            .WithColumn("School").AsString(256).Nullable()
-            .WithColumn("Enrolled").AsDateTime2().Nullable()
-            .WithColumn("Graduated").AsDateTime2().Nullable();
+        Create.Table("profile_education")
+            .WithColumn("id").AsInt32().NotNullable().PrimaryKey().Identity()
+            .WithColumn("profile_id").AsInt32().NotNullable()
+            .WithColumn("degree").AsString(256).Nullable()
+            .WithColumn("degree_abbrev").AsString(256).Nullable()
+            .WithColumn("field_of_study").AsString(256).Nullable()
+            .WithColumn("field_of_study_abbrev").AsString(256).Nullable()
+            .WithColumn("school").AsString(256).Nullable()
+            .WithColumn("enrolled").AsDateTime2().Nullable()
+            .WithColumn("graduated").AsDateTime2().Nullable();
 
-        Create.ForeignKey("FK_ProfileEducation_Profile")
-            .FromTable("ProfileEducation").ForeignColumn("ProfileId")
-            .ToTable("Profile").PrimaryColumn("Id");
+        Create.ForeignKey("fk_profile_education_profile")
+            .FromTable("profile_education").ForeignColumn("profile_id")
+            .ToTable("profile").PrimaryColumn("id");
     }
 
     public override void Down()
     {
-        Delete.ForeignKey("FK_ProfileEducation_Profile")
-            .OnTable("ProfileEducation");
-        Delete.Table("ProfileEducation");
+        Delete.ForeignKey("fk_profile_education_profile")
+            .OnTable("profile_education");
+        Delete.Table("profile_education");
     }
 }

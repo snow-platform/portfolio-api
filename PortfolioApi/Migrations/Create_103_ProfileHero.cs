@@ -7,24 +7,24 @@ public class Create_103_ProfileHero : Migration
 {
     public override void Up()
     {
-        Create.Table("ProfileHero")
-            .WithColumn("Id").AsInt32().NotNullable().PrimaryKey().Identity()
-            .WithColumn("ProfileId").AsInt32().NotNullable()
-            .WithColumn("Head").AsString(1024).Nullable()
-            .WithColumn("Text").AsString(1024).Nullable()
-            .WithColumn("Title").AsString(256).Nullable()
-            .WithColumn("State").AsString(256).Nullable()
-            .WithColumn("Status").AsString(256).Nullable();
+        Create.Table("profile_hero")
+            .WithColumn("id").AsInt32().NotNullable().PrimaryKey().Identity()
+            .WithColumn("profile_id").AsInt32().NotNullable()
+            .WithColumn("head").AsString(1024).Nullable()
+            .WithColumn("text").AsString(1024).Nullable()
+            .WithColumn("title").AsString(256).Nullable()
+            .WithColumn("state").AsString(256).Nullable()
+            .WithColumn("status").AsString(256).Nullable();
 
-        Create.ForeignKey("FK_ProfileHero_Profile")
-            .FromTable("ProfileHero").ForeignColumn("ProfileId")
-            .ToTable("Profile").PrimaryColumn("Id");
+        Create.ForeignKey("fk_profile_hero_profile")
+            .FromTable("profile_hero").ForeignColumn("profile_id")
+            .ToTable("profile").PrimaryColumn("id");
     }
 
     public override void Down()
     {
-        Delete.ForeignKey("FK_ProfileHero_Profile")
-            .OnTable("ProfileHero");
-        Delete.Table("ProfileHero");
+        Delete.ForeignKey("fk_profile_hero_profile")
+            .OnTable("profile_hero");
+        Delete.Table("profile_hero");
     }
 }

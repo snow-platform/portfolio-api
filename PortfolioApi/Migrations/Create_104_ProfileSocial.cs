@@ -7,21 +7,21 @@ public class Create_104_ProfileSocial : Migration
 {
     public override void Up()
     {
-        Create.Table("ProfileSocial")
-            .WithColumn("Id").AsInt32().NotNullable().PrimaryKey().Identity()
-            .WithColumn("ProfileId").AsInt32().NotNullable()
-            .WithColumn("Name").AsString(256).Nullable()
-            .WithColumn("Link").AsString(256).Nullable();
+        Create.Table("profile_social")
+            .WithColumn("id").AsInt32().NotNullable().PrimaryKey().Identity()
+            .WithColumn("profile_id").AsInt32().NotNullable()
+            .WithColumn("name").AsString(256).Nullable()
+            .WithColumn("link").AsString(256).Nullable();
 
-        Create.ForeignKey("FK_ProfileSocial_Profile")
-            .FromTable("ProfileSocial").ForeignColumn("ProfileId")
-            .ToTable("Profile").PrimaryColumn("Id");
+        Create.ForeignKey("fk_profile_social_profile")
+            .FromTable("profile_social").ForeignColumn("profile_id")
+            .ToTable("profile").PrimaryColumn("id");
     }
 
     public override void Down()
     {
-        Delete.ForeignKey("FK_ProfileSocial_Profile")
-            .OnTable("ProfileSocial");
-        Delete.Table("ProfileSocial");
+        Delete.ForeignKey("fk_profile_social_profile")
+            .OnTable("profile_social");
+        Delete.Table("profile_social");
     }
 }

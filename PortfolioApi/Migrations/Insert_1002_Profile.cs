@@ -8,29 +8,29 @@ public class Insert_1002_Profile : Migration
 {
     public override void Up()
     {
-        Insert.IntoTable("Profile")
+        Insert.IntoTable("profile")
             .Row(new
             {
-                ExternalId = "33a88871-2a53-47db-98a3-c479c196f4f5",
-                UserId = 1,
-                FirstName = "Carlo",
-                LastName = "Caballero",
-                Email = "apply.estellise.caballero@gmail.com",
-                Photo = "https://profile.r2.carlocaballero.com/imijs/portrait/wqe.jpg",
-                Title = "Senior Software Developer",
-                Stack = ".NET Developer",
-                State = "Cebu",
-                About = "A software developer of 7+ years building reliable, maintainable, and scalable systems.",
-                Summary =
+                external_id = "33a88871-2a53-47db-98a3-c479c196f4f5",
+                user_id = 1,
+                first_name = "Carlo",
+                last_name = "Caballero",
+                email = "apply.estellise.caballero@gmail.com",
+                photo = "https://profile.r2.carlocaballero.com/imijs/portrait/wqe.jpg",
+                title = "Senior Software Developer",
+                stack = ".NET Developer",
+                state = "Cebu",
+                about = "A software developer of 7+ years building reliable, maintainable, and scalable systems.",
+                summary =
                     "A software developer specializing in C# and .NET technologies, with expertise in building services and APIs. I\ndesign, develop, and maintain applications and APIs that are efficient, reliable, maintainable, and scalable.",
-                CreatedAt = DateTime.Now,
-                UpdatedAt = DateTime.Now
+                created_at = DateTime.Now,
+                updated_at = DateTime.Now
             });
     }
 
     public override void Down()
     {
-        Delete.FromTable("Profile")
-            .Row(new { Email = "apply.estellise.caballero@gmail.com" });
+        Delete.FromTable("profile")
+            .Row(new { email = "apply.estellise.caballero@gmail.com" });
     }
 }

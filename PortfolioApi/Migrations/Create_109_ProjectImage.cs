@@ -7,20 +7,20 @@ public class Create_109_ProjectImage : Migration
 {
     public override void Up()
     {
-        Create.Table("ProjectImage")
-            .WithColumn("Id").AsInt32().NotNullable().PrimaryKey().Identity()
-            .WithColumn("ProjectId").AsInt32().NotNullable()
-            .WithColumn("Imij").AsString(256).Nullable();
+        Create.Table("project_image")
+            .WithColumn("id").AsInt32().NotNullable().PrimaryKey().Identity()
+            .WithColumn("project_id").AsInt32().NotNullable()
+            .WithColumn("imij").AsString(256).Nullable();
 
-        Create.ForeignKey("FK_ProjectImage_CareerProject")
-            .FromTable("ProjectImage").ForeignColumn("ProjectId")
-            .ToTable("CareerProject").PrimaryColumn("Id");
+        Create.ForeignKey("fk_project_image_career_project")
+            .FromTable("project_image").ForeignColumn("project_id")
+            .ToTable("career_project").PrimaryColumn("id");
     }
 
     public override void Down()
     {
-        Delete.ForeignKey("FK_ProjectImage_CareerProject")
-            .OnTable("ProjectImage");
-        Delete.Table("ProjectImage");
+        Delete.ForeignKey("fk_project_image_career_project")
+            .OnTable("project_image");
+        Delete.Table("project_image");
     }
 }

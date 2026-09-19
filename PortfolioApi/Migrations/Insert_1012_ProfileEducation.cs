@@ -7,25 +7,25 @@ public class Insert_1012_ProfileEducation : Migration
 {
     public override void Up()
     {
-        Insert.IntoTable("ProfileEducation")
+        Insert.IntoTable("profile_education")
             .Rows([
                 new
                 {
-                    ProfileId = 1,
-                    Degree = "Bachelor of Science",
-                    DegreeAbbrev = "BS",
-                    FieldOfStudy = "Information Technology",
-                    FieldOfStudyAbbrev = "IT",
-                    School = "Cebu Technological University",
-                    Enrolled = new DateTime(2015, 5, 1),
-                    Graduated = new DateTime(2019, 6, 1)
+                    profile_id = 1,
+                    degree = "Bachelor of Science",
+                    degree_abbrev = "BS",
+                    field_of_study = "Information Technology",
+                    field_of_study_abbrev = "IT",
+                    school = "Cebu Technological University",
+                    enrolled = new DateTime(2015, 5, 1),
+                    graduated = new DateTime(2019, 6, 1)
                 },
             ]);
     }
 
     public override void Down()
     {
-        Delete.FromTable("ProfileEducation")
-            .Row(new { ProfileId = 1 });
+        Delete.FromTable("profile_education")
+            .Row(new { profile_id = 1 });
     }
 }

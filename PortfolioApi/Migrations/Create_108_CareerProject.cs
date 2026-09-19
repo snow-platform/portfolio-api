@@ -7,22 +7,22 @@ public class Create_108_CareerProject : Migration
 {
     public override void Up()
     {
-        Create.Table("CareerProject")
-            .WithColumn("Id").AsInt32().NotNullable().PrimaryKey().Identity()
-            .WithColumn("CareerId").AsInt32().NotNullable()
-            .WithColumn("Title").AsString(256).Nullable()
-            .WithColumn("Description").AsString(int.MaxValue).Nullable()
-            .WithColumn("Significance").AsFloat().NotNullable();
+        Create.Table("career_project")
+            .WithColumn("id").AsInt32().NotNullable().PrimaryKey().Identity()
+            .WithColumn("career_id").AsInt32().NotNullable()
+            .WithColumn("title").AsString(256).Nullable()
+            .WithColumn("description").AsString(int.MaxValue).Nullable()
+            .WithColumn("significance").AsFloat().NotNullable();
 
-        Create.ForeignKey("FK_CareerProject_ProfileCareer")
-            .FromTable("CareerProject").ForeignColumn("CareerId")
-            .ToTable("ProfileCareer").PrimaryColumn("Id");
+        Create.ForeignKey("fk_career_project_profile_career")
+            .FromTable("career_project").ForeignColumn("career_id")
+            .ToTable("profile_career").PrimaryColumn("id");
     }
 
     public override void Down()
     {
-        Delete.ForeignKey("FK_CareerProject_ProfileCareer")
-            .OnTable("CareerProject");
-        Delete.Table("CareerProject");
+        Delete.ForeignKey("fk_career_project_profile_career")
+            .OnTable("career_project");
+        Delete.Table("career_project");
     }
 }

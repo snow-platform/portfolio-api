@@ -7,41 +7,38 @@ public class Insert_1007_ProfileCareer : Migration
 {
     public override void Up()
     {
-        Insert.IntoTable("ProfileCareer")
+        Insert.IntoTable("profile_career")
             .Rows([
                 new
                 {
-                    Id = 1,
-                    ProfileId = 1,
-                    Name = "Full Scale",
-                    Position = ".NET Developer",
-                    Joined = new DateTime(2023, 1, 9),
-                    Leaved = (DateTime?)null
+                    profile_id = 1,
+                    name = "Full Scale",
+                    position = ".NET Developer",
+                    joined = new DateTime(2023, 1, 9),
+                    leaved = (DateTime?)null
                 },
                 new
                 {
-                    Id = 2,
-                    ProfileId = 1,
-                    Name = "FreCre, Inc",
-                    Position = "Mobile + Game / Backend / .NET Developer",
-                    Joined = new DateTime(2019, 9, 1),
-                    Leaved = new DateTime(2022, 12, 29)
+                    profile_id = 1,
+                    name = "FreCre, Inc",
+                    position = "Mobile + Game / Backend / .NET Developer",
+                    joined = new DateTime(2019, 9, 1),
+                    leaved = new DateTime(2022, 12, 29)
                 },
                 new
                 {
-                    Id = 3,
-                    ProfileId = 1,
-                    Name = "Tudlo Innovation Solutions Inc",
-                    Position = "Web Developer - Intern",
-                    Joined = new DateTime(2018, 9, 1),
-                    Leaved = new DateTime(2019, 4, 1)
+                    profile_id = 1,
+                    name = "Tudlo Innovation Solutions Inc",
+                    position = "Web Developer - Intern",
+                    joined = new DateTime(2018, 9, 1),
+                    leaved = new DateTime(2019, 4, 1)
                 }
             ]);
     }
 
     public override void Down()
     {
-        Delete.FromTable("ProfileCareer")
-            .Row(new { ProfileId = 1 });
+        Delete.FromTable("profile_career")
+            .Row(new { profile_id = 1 });
     }
 }

@@ -7,22 +7,22 @@ public class Create_113_ProfileCms : Migration
 {
     public override void Up()
     {
-        Create.Table("ProfileCms")
-            .WithColumn("Id").AsInt32().NotNullable().PrimaryKey().Identity()
-            .WithColumn("ProfileId").AsInt32().NotNullable()
-            .WithColumn("Name").AsString(256).Nullable()
-            .WithColumn("Token").AsString(int.MaxValue).Nullable()
-            .WithColumn("CreatedAt").AsDateTime2().NotNullable();
+        Create.Table("profile_cms")
+            .WithColumn("id").AsInt32().NotNullable().PrimaryKey().Identity()
+            .WithColumn("profile_id").AsInt32().NotNullable()
+            .WithColumn("name").AsString(256).Nullable()
+            .WithColumn("token").AsString(int.MaxValue).Nullable()
+            .WithColumn("created_at").AsDateTime2().NotNullable();
 
-        Create.ForeignKey("FK_ProfileCms_Profile")
-            .FromTable("ProfileCms").ForeignColumn("ProfileId")
-            .ToTable("Profile").PrimaryColumn("Id");
+        Create.ForeignKey("fk_profile_cms_profile")
+            .FromTable("profile_cms").ForeignColumn("profile_id")
+            .ToTable("profile").PrimaryColumn("id");
     }
 
     public override void Down()
     {
-        Delete.ForeignKey("FK_ProfileCms_Profile")
-            .OnTable("ProfileCms");
-        Delete.Table("ProfileCms");
+        Delete.ForeignKey("fk_profile_cms_profile")
+            .OnTable("profile_cms");
+        Delete.Table("profile_cms");
     }
 }

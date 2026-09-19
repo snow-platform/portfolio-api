@@ -7,23 +7,23 @@ public class Create_105_ProfileSkills : Migration
 {
     public override void Up()
     {
-        Create.Table("ProfileSkill")
-            .WithColumn("Id").AsInt32().NotNullable().PrimaryKey().Identity()
-            .WithColumn("ProfileId").AsInt32().NotNullable()
-            .WithColumn("Category").AsString(256).Nullable()
-            .WithColumn("Name").AsString(256).Nullable()
-            .WithColumn("Proficiency").AsFloat().NotNullable()
-            .WithColumn("CreatedAt").AsDateTime2().Nullable();
+        Create.Table("profile_skill")
+            .WithColumn("id").AsInt32().NotNullable().PrimaryKey().Identity()
+            .WithColumn("profile_id").AsInt32().NotNullable()
+            .WithColumn("category").AsString(256).Nullable()
+            .WithColumn("name").AsString(256).Nullable()
+            .WithColumn("proficiency").AsFloat().NotNullable()
+            .WithColumn("created_at").AsDateTime2().Nullable();
 
-        Create.ForeignKey("FK_ProfileSkill_Profile")
-            .FromTable("ProfileSkill").ForeignColumn("ProfileId")
-            .ToTable("Profile").PrimaryColumn("Id");
+        Create.ForeignKey("fk_profile_skill_profile")
+            .FromTable("profile_skill").ForeignColumn("profile_id")
+            .ToTable("profile").PrimaryColumn("id");
     }
 
     public override void Down()
     {
-        Delete.ForeignKey("FK_ProfileSkill_Profile")
-            .OnTable("ProfileSkill");
-        Delete.Table("ProfileSkill");
+        Delete.ForeignKey("fk_profile_skill_profile")
+            .OnTable("profile_skill");
+        Delete.Table("profile_skill");
     }
 }

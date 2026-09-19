@@ -7,23 +7,23 @@ public class Create_107_ProfileCareer : Migration
 {
     public override void Up()
     {
-        Create.Table("ProfileCareer")
-            .WithColumn("Id").AsInt32().NotNullable().PrimaryKey().Identity()
-            .WithColumn("ProfileId").AsInt32().NotNullable()
-            .WithColumn("Name").AsString(256).Nullable()
-            .WithColumn("Position").AsString(256).Nullable()
-            .WithColumn("Joined").AsDateTime2().Nullable()
-            .WithColumn("Leaved").AsDateTime2().Nullable();
+        Create.Table("profile_career")
+            .WithColumn("id").AsInt32().NotNullable().PrimaryKey().Identity()
+            .WithColumn("profile_id").AsInt32().NotNullable()
+            .WithColumn("name").AsString(256).Nullable()
+            .WithColumn("position").AsString(256).Nullable()
+            .WithColumn("joined").AsDateTime2().Nullable()
+            .WithColumn("leaved").AsDateTime2().Nullable();
 
-        Create.ForeignKey("FK_ProfileCareer_Profile")
-            .FromTable("ProfileCareer").ForeignColumn("ProfileId")
-            .ToTable("Profile").PrimaryColumn("Id");
+        Create.ForeignKey("fk_profile_career_profile")
+            .FromTable("profile_career").ForeignColumn("profile_id")
+            .ToTable("profile").PrimaryColumn("id");
     }
 
     public override void Down()
     {
-        Delete.ForeignKey("FK_ProfileCareer_Profile")
-            .OnTable("ProfileCareer");
-        Delete.Table("ProfileCareer");
+        Delete.ForeignKey("fk_profile_career_profile")
+            .OnTable("profile_career");
+        Delete.Table("profile_career");
     }
 }

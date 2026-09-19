@@ -7,261 +7,261 @@ public class Insert_1005_ProfileSkill : Migration
 {
     public override void Up()
     {
-        Insert.IntoTable("ProfileSkill")
+        Insert.IntoTable("profile_skill")
             .Rows([
                 new
                 {
-                    ProfileId = 1,
-                    Category = "Languages",
-                    Name = "C#",
-                    Proficiency = 0.95f,
-                    CreatedAt = DateTime.Now
+                    profile_id = 1,
+                    category = "Languages",
+                    name = "C#",
+                    proficiency = 0.95f,
+                    created_at = DateTime.Now
                 },
                 new
                 {
-                    ProfileId = 1,
-                    Category = "Languages",
-                    Name = "Typescript",
-                    Proficiency = 0.75f,
-                    CreatedAt = DateTime.Now
+                    profile_id = 1,
+                    category = "Languages",
+                    name = "Typescript",
+                    proficiency = 0.75f,
+                    created_at = DateTime.Now
                 },
                 new
                 {
-                    ProfileId = 1,
-                    Category = "Languages",
-                    Name = "JavaScript",
-                    Proficiency = 0.75f,
-                    CreatedAt = DateTime.Now
+                    profile_id = 1,
+                    category = "Languages",
+                    name = "JavaScript",
+                    proficiency = 0.75f,
+                    created_at = DateTime.Now
                 },
                 new
                 {
-                    ProfileId = 1,
-                    Category = "Languages",
-                    Name = "SQL",
-                    Proficiency = 0.7f,
-                    CreatedAt = DateTime.Now
-                },
-
-                new
-                {
-                    ProfileId = 1,
-                    Category = "Frameworks",
-                    Name = ".NET",
-                    Proficiency = 0.95f,
-                    CreatedAt = DateTime.Now
-                },
-                new
-                {
-                    ProfileId = 1,
-                    Category = "Frameworks",
-                    Name = "ASP.NET Core",
-                    Proficiency = 0.9f,
-                    CreatedAt = DateTime.Now
-                },
-                new
-                {
-                    ProfileId = 1,
-                    Category = "Frameworks",
-                    Name = "Blazor",
-                    Proficiency = 0.65f,
-                    CreatedAt = DateTime.Now
-                },
-                new
-                {
-                    ProfileId = 1,
-                    Category = "Frameworks",
-                    Name = "Angular",
-                    Proficiency = 0.6f,
-                    CreatedAt = DateTime.Now
-                },
-                new
-                {
-                    ProfileId = 1,
-                    Category = "Frameworks",
-                    Name = "Node.js",
-                    Proficiency = 0.7f,
-                    CreatedAt = DateTime.Now
+                    profile_id = 1,
+                    category = "Languages",
+                    name = "SQL",
+                    proficiency = 0.7f,
+                    created_at = DateTime.Now
                 },
 
                 new
                 {
-                    ProfileId = 1,
-                    Category = "Infra & Data",
-                    Name = "Entity Framework / EF Core",
-                    Proficiency = 0.85f,
-                    CreatedAt = DateTime.Now
+                    profile_id = 1,
+                    category = "Frameworks",
+                    name = ".NET",
+                    proficiency = 0.95f,
+                    created_at = DateTime.Now
                 },
                 new
                 {
-                    ProfileId = 1,
-                    Category = "Infra & Data",
-                    Name = "Dapper",
-                    Proficiency = 0.85f,
-                    CreatedAt = DateTime.Now
+                    profile_id = 1,
+                    category = "Frameworks",
+                    name = "ASP.NET Core",
+                    proficiency = 0.9f,
+                    created_at = DateTime.Now
                 },
                 new
                 {
-                    ProfileId = 1,
-                    Category = "Infra & Data",
-                    Name = "CI/CD",
-                    Proficiency = 0.9f,
-                    CreatedAt = DateTime.Now
+                    profile_id = 1,
+                    category = "Frameworks",
+                    name = "Blazor",
+                    proficiency = 0.65f,
+                    created_at = DateTime.Now
                 },
                 new
                 {
-                    ProfileId = 1,
-                    Category = "Infra & Data",
-                    Name = "Git",
-                    Proficiency = 0.85f,
-                    CreatedAt = DateTime.Now
+                    profile_id = 1,
+                    category = "Frameworks",
+                    name = "Angular",
+                    proficiency = 0.6f,
+                    created_at = DateTime.Now
                 },
                 new
                 {
-                    ProfileId = 1,
-                    Category = "Infra & Data",
-                    Name = "GitHub",
-                    Proficiency = 0.85f,
-                    CreatedAt = DateTime.Now
-                },
-                new
-                {
-                    ProfileId = 1,
-                    Category = "Infra & Data",
-                    Name = "GitHub Actions",
-                    Proficiency = 0.75f,
-                    CreatedAt = DateTime.Now
-                },
-                new
-                {
-                    ProfileId = 1,
-                    Category = "Infra & Data",
-                    Name = "Docker",
-                    Proficiency = 0.75f,
-                    CreatedAt = DateTime.Now
-                },
-                new
-                {
-                    ProfileId = 1,
-                    Category = "Infra & Data",
-                    Name = "Azure",
-                    Proficiency = 0.7f,
-                    CreatedAt = DateTime.Now
-                },
-                new
-                {
-                    ProfileId = 1,
-                    Category = "Infra & Data",
-                    Name = "Google Cloud Services",
-                    Proficiency = 0.6f,
-                    CreatedAt = DateTime.Now
-                },
-                new
-                {
-                    ProfileId = 1,
-                    Category = "Infra & Data",
-                    Name = "SQL Server",
-                    Proficiency = 0.8f,
-                    CreatedAt = DateTime.Now
-                },
-                new
-                {
-                    ProfileId = 1,
-                    Category = "Infra & Data",
-                    Name = "PostgreSQL",
-                    Proficiency = 0.75f,
-                    CreatedAt = DateTime.Now
-                },
-                new
-                {
-                    ProfileId = 1,
-                    Category = "Infra & Data",
-                    Name = "MySQL",
-                    Proficiency = 0.7f,
-                    CreatedAt = DateTime.Now
-                },
-                new
-                {
-                    ProfileId = 1,
-                    Category = "Infra & Data",
-                    Name = "SQLite",
-                    Proficiency = 0.85f,
-                    CreatedAt = DateTime.Now
+                    profile_id = 1,
+                    category = "Frameworks",
+                    name = "Node.js",
+                    proficiency = 0.7f,
+                    created_at = DateTime.Now
                 },
 
                 new
                 {
-                    ProfileId = 1,
-                    Category = "IDE",
-                    Name = "Rider",
-                    Proficiency = 0.9f,
-                    CreatedAt = DateTime.Now
+                    profile_id = 1,
+                    category = "Infra & Data",
+                    name = "Entity Framework / EF Core",
+                    proficiency = 0.85f,
+                    created_at = DateTime.Now
                 },
                 new
                 {
-                    ProfileId = 1,
-                    Category = "IDE",
-                    Name = "WebStorm",
-                    Proficiency = 0.9f,
-                    CreatedAt = DateTime.Now
+                    profile_id = 1,
+                    category = "Infra & Data",
+                    name = "Dapper",
+                    proficiency = 0.85f,
+                    created_at = DateTime.Now
                 },
                 new
                 {
-                    ProfileId = 1,
-                    Category = "IDE",
-                    Name = "DataGrip",
-                    Proficiency = 0.9f,
-                    CreatedAt = DateTime.Now
+                    profile_id = 1,
+                    category = "Infra & Data",
+                    name = "CI/CD",
+                    proficiency = 0.9f,
+                    created_at = DateTime.Now
                 },
                 new
                 {
-                    ProfileId = 1,
-                    Category = "IDE",
-                    Name = "VS Code",
-                    Proficiency = 0.7f,
-                    CreatedAt = DateTime.Now
+                    profile_id = 1,
+                    category = "Infra & Data",
+                    name = "Git",
+                    proficiency = 0.85f,
+                    created_at = DateTime.Now
                 },
                 new
                 {
-                    ProfileId = 1,
-                    Category = "IDE",
-                    Name = "Visual Studio",
-                    Proficiency = 0.7f,
-                    CreatedAt = DateTime.Now
+                    profile_id = 1,
+                    category = "Infra & Data",
+                    name = "GitHub",
+                    proficiency = 0.85f,
+                    created_at = DateTime.Now
+                },
+                new
+                {
+                    profile_id = 1,
+                    category = "Infra & Data",
+                    name = "GitHub Actions",
+                    proficiency = 0.75f,
+                    created_at = DateTime.Now
+                },
+                new
+                {
+                    profile_id = 1,
+                    category = "Infra & Data",
+                    name = "Docker",
+                    proficiency = 0.75f,
+                    created_at = DateTime.Now
+                },
+                new
+                {
+                    profile_id = 1,
+                    category = "Infra & Data",
+                    name = "Azure",
+                    proficiency = 0.7f,
+                    created_at = DateTime.Now
+                },
+                new
+                {
+                    profile_id = 1,
+                    category = "Infra & Data",
+                    name = "Google Cloud Services",
+                    proficiency = 0.6f,
+                    created_at = DateTime.Now
+                },
+                new
+                {
+                    profile_id = 1,
+                    category = "Infra & Data",
+                    name = "SQL Server",
+                    proficiency = 0.8f,
+                    created_at = DateTime.Now
+                },
+                new
+                {
+                    profile_id = 1,
+                    category = "Infra & Data",
+                    name = "PostgreSQL",
+                    proficiency = 0.75f,
+                    created_at = DateTime.Now
+                },
+                new
+                {
+                    profile_id = 1,
+                    category = "Infra & Data",
+                    name = "MySQL",
+                    proficiency = 0.7f,
+                    created_at = DateTime.Now
+                },
+                new
+                {
+                    profile_id = 1,
+                    category = "Infra & Data",
+                    name = "SQLite",
+                    proficiency = 0.85f,
+                    created_at = DateTime.Now
                 },
 
                 new
                 {
-                    ProfileId = 1,
-                    Category = "AI",
-                    Name = "Claude Code",
-                    Proficiency = 0.85f,
-                    CreatedAt = DateTime.Now
+                    profile_id = 1,
+                    category = "IDE",
+                    name = "Rider",
+                    proficiency = 0.9f,
+                    created_at = DateTime.Now
                 },
                 new
                 {
-                    ProfileId = 1,
-                    Category = "AI",
-                    Name = "GitHub Copilot",
-                    Proficiency = 0.8f,
-                    CreatedAt = DateTime.Now
+                    profile_id = 1,
+                    category = "IDE",
+                    name = "WebStorm",
+                    proficiency = 0.9f,
+                    created_at = DateTime.Now
                 },
                 new
                 {
-                    ProfileId = 1,
-                    Category = "AI",
-                    Name = "AI Assistant",
-                    Proficiency = 0.75f,
-                    CreatedAt = DateTime.Now
+                    profile_id = 1,
+                    category = "IDE",
+                    name = "DataGrip",
+                    proficiency = 0.9f,
+                    created_at = DateTime.Now
+                },
+                new
+                {
+                    profile_id = 1,
+                    category = "IDE",
+                    name = "VS Code",
+                    proficiency = 0.7f,
+                    created_at = DateTime.Now
+                },
+                new
+                {
+                    profile_id = 1,
+                    category = "IDE",
+                    name = "Visual Studio",
+                    proficiency = 0.7f,
+                    created_at = DateTime.Now
+                },
+
+                new
+                {
+                    profile_id = 1,
+                    category = "AI",
+                    name = "Claude Code",
+                    proficiency = 0.85f,
+                    created_at = DateTime.Now
+                },
+                new
+                {
+                    profile_id = 1,
+                    category = "AI",
+                    name = "GitHub Copilot",
+                    proficiency = 0.8f,
+                    created_at = DateTime.Now
+                },
+                new
+                {
+                    profile_id = 1,
+                    category = "AI",
+                    name = "AI Assistant",
+                    proficiency = 0.75f,
+                    created_at = DateTime.Now
                 }
             ]);
     }
 
     public override void Down()
     {
-        Delete.FromTable("ProfileSkill")
+        Delete.FromTable("profile_skill")
             .Row(new
             {
-                ProfileId = 1
+                profile_id = 1
             });
     }
 }

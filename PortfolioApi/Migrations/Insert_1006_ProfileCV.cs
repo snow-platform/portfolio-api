@@ -8,21 +8,21 @@ public class Insert_1006_ProfileCV : Migration
 {
     public override void Up()
     {
-        Insert.IntoTable("ProfileCV")
+        Insert.IntoTable("profile_cv")
             .Row(new
             {
-                ProfileId = 1,
-                CV = "https://mega.nz/file/WLQCiLQS#xN5WiTueXo9tAe81yQr3PtS4ejLsbo9gtCKxHeWzAzI",
-                CreatedAt = DateTime.Now
+                profile_id = 1,
+                cv = "https://mega.nz/file/WLQCiLQS#xN5WiTueXo9tAe81yQr3PtS4ejLsbo9gtCKxHeWzAzI",
+                created_at = DateTime.Now
             });
     }
 
     public override void Down()
     {
-        Delete.FromTable("ProfileCV")
+        Delete.FromTable("profile_cv")
             .Row(new
             {
-                ProfileId = 1
+                profile_id = 1
             });
     }
 }
