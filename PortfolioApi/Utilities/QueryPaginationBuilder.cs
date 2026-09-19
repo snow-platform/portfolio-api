@@ -1,3 +1,4 @@
+using System.Data;
 using Dapper;
 using PortfolioApi.EntityValueObject;
 using PortfolioApi.Extensions;
@@ -35,7 +36,7 @@ public class QueryPaginationBuilder
 
     public QueryPaginationBuilder ApplySearch()
     {
-        _parameters.Add("@Search", _pagination.Search);
+        _parameters.Add("@Search", _pagination.Search, DbType.String);
 
         return this;
     }
