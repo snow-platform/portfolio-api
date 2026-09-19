@@ -23,7 +23,7 @@ public class Pagination
     {
         return SortBy is not (null or "") && valid.Contains(SortBy)
             ? SortBy
-            : "Id";
+            : "id";
     }
 
     public string SanitizeSortDirection()
