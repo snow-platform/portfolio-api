@@ -17,4 +17,9 @@ public class SqliteConnectionSource : IDbConnection<SqliteConnection>
     {
         return new SqliteConnection(_connectionSource);
     }
+
+    public ValueTask<SqliteConnection> OpenConnectionAsync()
+    {
+        throw new NotImplementedException();
+    }
 }
