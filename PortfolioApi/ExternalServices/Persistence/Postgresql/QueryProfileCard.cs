@@ -32,10 +32,10 @@ public class QueryProfileCard : IQueryProfileCard
                                                        select p.*, psk.id, psk.profile_id, psk.category, psk.name, psk.proficiency
                                                        from (select id, external_id, first_name, last_name, email, title, stack, state, about, created_at, updated_at
                                                              from profile
-                                                             where (@Search is null or first_name like ''%' || @Search || '%''
-                                                              or last_name like ''%' || @Search || '%''
-                                                              or email like ''%' || @Search || '%''
-                                                              or title like ''%' || @Search || '%'') and ($Filter)
+                                                             where (@Search is null or first_name like '%' || @Search || '%'
+                                                               or last_name like '%' || @Search || '%'
+                                                               or email like '%' || @Search || '%'
+                                                               or title like '%' || @Search || '%') and ($Filter)
                                                              order by $Sort $Direction
                                                              limit @Size offset @Offset) p
                                                        left join profile_skill psk on p.id = psk.profile_id
@@ -49,10 +49,10 @@ public class QueryProfileCard : IQueryProfileCard
         var sqlTotal = paginationBuilderForTotal.Build("""
                                                        select count(*)
                                                        from profile
-                                                       where (@Search is null or first_name like ''%' || @Search || '%''
-                                                                  or last_name like ''%' || @Search || '%''
-                                                                  or email like ''%' || @Search || '%''
-                                                                  or title like ''%' || @Search || '%'') and
+                                                       where (@Search is null or first_name like '%' || @Search || '%'
+                                                                  or last_name like '%' || @Search || '%'
+                                                                  or email like '%' || @Search || '%'
+                                                                  or title like '%' || @Search || '%') and
                                                            ($Filter)
                                                        """);
 
