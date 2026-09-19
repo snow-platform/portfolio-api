@@ -1,7 +1,7 @@
 using PortfolioApi.ExternalServices.CMS;
 using PortfolioApi.ExternalServices.Persistence;
 using PortfolioApi.ExternalServices.Persistence.Cache;
-using PortfolioApi.ExternalServices.Persistence.Sqlite;
+using PortfolioApi.ExternalServices.Persistence.Postgresql;
 
 namespace PortfolioApi;
 

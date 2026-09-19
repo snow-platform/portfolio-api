@@ -1,13 +1,14 @@
 using Asp.Versioning;
 using FluentMigrator.Runner;
+using FluentMigrator.Runner.Conventions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.HttpLogging;
-using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Caching.Hybrid;
 using Microsoft.Extensions.Logging.Console;
 using Microsoft.IdentityModel.Tokens;
+using Npgsql;
 using PortfolioApi.ExternalServices.Persistence;
-using PortfolioApi.ExternalServices.Persistence.Sqlite;
+using PortfolioApi.ExternalServices.Persistence.Postgresql;
 using PortfolioApi.Options;
 
 namespace PortfolioApi;
@@ -81,11 +82,15 @@ public static class ProgramExtensions
 
         public IServiceCollection AddSqlDb()
         {
-            services.AddSingleton<IDbConnection<SqliteConnection>, SqliteConnectionSource>();
+            // sqlite
+            // services.AddSingleton<IDbConnection<SqliteConnection>, SqliteConnectionSource>();
+
+            // postgresql
+            services.AddSingleton<IDbConnection<NpgsqlConnection>, PostgresqlConnectionSource>();
 
             return services;
         }
-        
+
         public IServiceCollection AddCaching()
         {
             services.AddHybridCache(x =>
@@ -109,11 +114,15 @@ public static class ProgramExtensions
         {
             var connection = builder.Configuration.GetConnectionString("Main");
 
+            // when multiple schemas are use for migration
+            // build a service collection with different IConventionSet for schemas
+            builder.Services.AddScoped<IConventionSet>(_ => new DefaultConventionSet("cv", null));
+
             builder.Services
                 .AddFluentMigratorCore()
                 .ConfigureRunner(x =>
                 {
-                    x.AddSQLite(compatibilityMode: CompatibilityMode.LOOSE)
+                    x.AddPostgres()
                         .WithGlobalConnectionString(connection)
                         .ScanIn(typeof(Program).Assembly).For.Migrations();
                 });
@@ -123,7 +132,14 @@ public static class ProgramExtensions
 
         public IHostApplicationBuilder AddOptions()
         {
-            builder.Services.Configure<ConnectionSource>(builder.Configuration.GetSection("ConnectionStrings"));
+            var connectionString = builder.Configuration.GetConnectionString("Main");
+
+            if (connectionString is "" or null)
+            {
+                throw new NullReferenceException("The connection string is null");
+            }
+
+            builder.Services.Configure<ConnectionSource>(x => x.Main = connectionString);
 
             return builder;
         }

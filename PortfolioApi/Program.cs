@@ -1,6 +1,9 @@
 using System.Text.Json;
+using Dapper;
 using PortfolioApi;
 using Scalar.AspNetCore;
+
+DefaultTypeMap.MatchNamesWithUnderscores = true;
 
 var builder = WebApplication.CreateBuilder(args);
 
