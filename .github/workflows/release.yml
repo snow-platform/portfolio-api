@@ -68,6 +68,7 @@ jobs:
       - name: compose up
         env:
           TAG_NAME: ${{ github.event.release.tag_name }}
+          POSTGRESQL_MAIN: ${{ secrets.POSTGRESQL_PROFILE_MAIN }}
         run: |
           VERSION=${TAG_NAME#v}
           VERSION=$VERSION docker compose up -d
