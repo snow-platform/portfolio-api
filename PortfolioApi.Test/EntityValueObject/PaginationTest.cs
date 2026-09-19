@@ -97,7 +97,7 @@ public class PaginationTest
         var paginationSortBy = pagination.SanitizeSortBy("Id", "Email");
 
         // assert
-        Assert.Equal("Id", paginationSortBy);
+        Assert.Equal("id", paginationSortBy);
     }
 
     [Theory]
