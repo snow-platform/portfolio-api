@@ -79,12 +79,12 @@ public class Insert_1010_ProjectTechnology : Migration
                 new
                 {
                     project_id = 4,
-                    tech = "SQL Server"
+                    tech = "Entity Framework"
                 },
                 new
                 {
                     project_id = 4,
-                    tech = "Entity Framework"
+                    tech = "SQL Server"
                 },
                 new
                 {
@@ -133,17 +133,17 @@ public class Insert_1010_ProjectTechnology : Migration
                 new
                 {
                     project_id = 6,
+                    tech = "Entity Framework"
+                },
+                new
+                {
+                    project_id = 6,
                     tech = "SQL Server"
                 },
                 new
                 {
                     project_id = 6,
                     tech = "PostgreSQL"
-                },
-                new
-                {
-                    project_id = 6,
-                    tech = "Entity Framework"
                 },
                 new
                 {
