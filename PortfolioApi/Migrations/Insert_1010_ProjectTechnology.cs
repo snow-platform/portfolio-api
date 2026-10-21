@@ -67,16 +67,6 @@ public class Insert_1010_ProjectTechnology : Migration
                 new
                 {
                     project_id = 3,
-                    tech = "Redis"
-                },
-                new
-                {
-                    project_id = 3,
-                    tech = "SignalR"
-                },
-                new
-                {
-                    project_id = 3,
                     tech = "Azure Key Vault"
                 },
 
@@ -89,17 +79,22 @@ public class Insert_1010_ProjectTechnology : Migration
                 new
                 {
                     project_id = 4,
-                    tech = "Entity Framework"
-                },
-                new
-                {
-                    project_id = 4,
                     tech = "SQL Server"
                 },
                 new
                 {
                     project_id = 4,
+                    tech = "Entity Framework"
+                },
+                new
+                {
+                    project_id = 4,
                     tech = "Frontegg"
+                },
+                new
+                {
+                    project_id = 4,
+                    tech = "SignalR"
                 },
                 new
                 {
@@ -129,7 +124,7 @@ public class Insert_1010_ProjectTechnology : Migration
                     tech = "PrimeNG"
                 },
 
-                // 6 - Partner Card Management APIs
+                // 6 - Card Management APIs
                 new
                 {
                     project_id = 6,
@@ -144,6 +139,16 @@ public class Insert_1010_ProjectTechnology : Migration
                 {
                     project_id = 6,
                     tech = "PostgreSQL"
+                },
+                new
+                {
+                    project_id = 6,
+                    tech = "Entity Framework"
+                },
+                new
+                {
+                    project_id = 6,
+                    tech = "Frontegg"
                 },
                 new
                 {
